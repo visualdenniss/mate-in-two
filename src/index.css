@@ -1,12 +1,23 @@
-@import url('https://fonts.googleapis.com/css2?family=Karla:wght@400;600;800&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Karla:wght@400;600;800&display=swap");
 
 * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: 'Karla', sans-serif;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Karla", sans-serif;
 }
 
 :root {
+  --bg: #f3f1ef;
+  --font: rgb(41, 41, 41);
+}
 
+body.light {
+  --bg-primary: var(--bg);
+  --font-primary: var(--font);
+}
+
+body.dark {
+  --bg-primary: var(--font);
+  --font-primary: var(--bg);
 }

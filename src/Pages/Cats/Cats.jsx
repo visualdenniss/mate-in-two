@@ -18,7 +18,7 @@ const Cats = () => {
 
     return (
         <div className='cats'>
-
+            <h4 className='cats-header'>Feeling Bored?</h4>
             <img className='cat-img' src={cat} alt="" />
             <button className="gen-btn" onClick={()=>getCat()}>
                 <GiDiceFire></GiDiceFire>

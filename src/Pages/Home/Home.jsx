@@ -6,16 +6,25 @@ import { motion } from 'framer-motion'
 import './Home.css'
 import { AiOutlinePlus } from 'react-icons/ai'
 import Loading from '../../Components/Loading/Loading'
-const Home = ({fen, puzzleId, getPuzzle, isLoading}) => {
+const Home = ({fen, puzzleId, getPuzzle,puzzleAuthor, puzzleSource, puzzleYear, isLoading}) => {
 
     const solutionRef = useRef()
+    const infoRef = useRef()
 
     const displaySolution = () => {
         solutionRef.current.classList.toggle('solution-active')
     }
 
+    const displayInfo = () => {
+        infoRef.current.classList.toggle('info-data-active')
+    }
+
     const fadeOut = () => {
         solutionRef.current.classList.remove('solution-active')
+    }
+
+    const fadeOutInfo = () => {
+         infoRef.current.classList.remove('info-data-active')
     }
 
 
@@ -24,7 +33,19 @@ const Home = ({fen, puzzleId, getPuzzle, isLoading}) => {
             <div className="title">#02</div>
             <div className="wrapper">
                 <div className="info-component">
-                    <div className="info-content">
+                    <div className="info-content" onClick={() => displayInfo()} 
+                    onMouseLeave={() => fadeOutInfo()}
+                    >
+                        <div ref={infoRef} className="info-data">
+                        <p className="author">
+                          <span>Author: </span>  {puzzleAuthor.map((author)=>(
+                              author
+                          ))}
+                        </p>
+                        <div className="puzzle-source">
+                            <span>Source:</span> {puzzleSource}, {puzzleYear}
+                        </div>
+                        </div>
                         <span className='info-text'>
                             Info
                         </span>

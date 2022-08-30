@@ -1,6 +1,6 @@
 .app {
   /* border: 1px solid red; */
   height: 100vh;
-  background: #f3f1ef;
+  background: var(--bg-primary);
   overflow: hidden;
 }

@@ -14,6 +14,9 @@ const App = () => {
 
     const [fen,setFen] = useState("2R5/4bppk/1p1p3Q/5R1P/4P3/5P2/r4q1P/7K b - - 6 50")
     const [puzzleId, setPuzzleId] = useState('')
+    const [puzzleAuthor, setPuzzleAuthor] = useState([])
+    const [puzzleSourceName, setPuzzleSourceName] = useState('')
+    const [puzzleYear,setPuzzleYear] = useState('')
 
     const url = 'https://mate-in-two.herokuapp.com/'
 
@@ -23,9 +26,17 @@ const App = () => {
         const res = await axios.get(url)
         const puzzleFen = res.data.fen
         const id = res.data.puzzleId
-        console.log(res.data)
+        const source = res.data.puzzleSource.name
+        const year = res.data.puzzleSource.date.year
+        const author = res.data.puzzleAuthor
+
+        console.log(source);
+
         setFen(puzzleFen)
         setPuzzleId(id)
+        setPuzzleAuthor(author)
+        setPuzzleSourceName(source)
+        setPuzzleYear(year)
         setIsLoading(false)
     }
 
@@ -38,7 +49,17 @@ const App = () => {
         <div className='app'>
             <Sidebar></Sidebar>
             <Routes>
-            <Route exact path='/' element={<Home fen={fen} setFen={setFen} puzzleId={puzzleId} setPuzzleId={setPuzzleId} getPuzzle={getPuzzle} isLoading={isLoading}></Home>}></Route>
+            <Route exact path='/' 
+            element={<Home 
+            fen={fen} 
+            setFen={setFen} 
+            puzzleId={puzzleId} 
+            setPuzzleId={setPuzzleId} 
+            getPuzzle={getPuzzle} 
+            puzzleAuthor={puzzleAuthor}
+            puzzleSource={puzzleSourceName}
+            puzzleYear={puzzleYear}
+            isLoading={isLoading}></Home>}></Route>
             <Route path='/cats' element={ <Cats></Cats>}></Route>
             <Route path='/about' element={ <About></About>}></Route>
             </Routes>

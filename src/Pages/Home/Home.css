@@ -7,7 +7,7 @@
   justify-content: center;
   align-items: center;
   position: relative;
-  background: #f3f1ef;
+  background: var(--bg-primary);
   flex-direction: column;
 }
 
@@ -16,6 +16,7 @@
   top: 20px;
   right: 50px;
   font-size: 38px;
+  color: var(--font-primary);
 }
 
 .wrapper {
@@ -47,6 +48,7 @@
   height: max-content;
   width: 5.75rem;
   cursor: pointer;
+  color: var(--font-primary);
 }
 
 .info-content {
@@ -59,6 +61,29 @@
   margin-bottom: 4px;
 }
 
+.info-data {
+  position: absolute;
+  top: 0%;
+  right: 0;
+  /* border: 1px solid red; */
+  width: max-content;
+  max-width: 230px;
+  text-align: right;
+  font-size: 16px;
+  font-weight: 600;
+  opacity: 0;
+  transition: all 0.8s cubic-bezier(0.65, 0, 0.076, 1);
+}
+
+.info-data-active {
+  opacity: 1;
+  top: -200%;
+}
+
+.info-data span {
+  font-weight: 800;
+}
+
 .circle {
   position: relative;
   display: flex;
@@ -68,9 +93,11 @@
   width: calc(400px / 8);
   height: calc(400px / 8);
   /* background: #282936; */
-  border: 2px solid #282936;
+  border: 2px solid var(--font-primary);
   /* border-radius: 1.625rem; */
   transition: all 0.45s cubic-bezier(0.65, 0, 0.076, 1);
+  z-index: 1000;
+  background: var(--bg-primary);
 }
 
 .info-content:hover .circle {
@@ -94,6 +121,7 @@
   transition: all 0.45s cubic-bezier(0.65, 0, 0.076, 1);
   font-weight: 600;
   /* color: #fff; */
+  z-index: 2000;
 }
 
 .info-content:hover .info-text {
@@ -113,6 +141,7 @@
   width: 8.5rem;
   /* width: 100%; */
   cursor: pointer;
+  color: var(--font-primary);
 }
 
 .solution-content {
@@ -135,10 +164,10 @@
   /* width: 100%; */
   height: calc(400px / 8);
   /* height: 100%; */
-  background: #f3f1ef;
+  background: var(--bg-primary);
   z-index: 1000;
   /* background: #282936; */
-  border: 2px solid #282936;
+  border: 2px solid var(--font-primary);
   /* border-radius: 1.625rem; */
   transition: all 0.45s cubic-bezier(0.65, 0, 0.076, 1);
 }
@@ -154,7 +183,7 @@
 
 .solution-icon {
   position: absolute;
-  top: 45px;
+  top: 47px;
   bottom: 0;
   left: 0;
   transform: translate(1.25rem, -37px);
@@ -163,20 +192,20 @@
 }
 
 .solution-data {
-  /* margin-top: 80px; */
+  margin-top: 40px;
   padding: 0px 20px;
   opacity: 1;
   /* border: 1px solid black; */
   height: max-content;
   position: absolute;
   top: 0;
-  transition: all 0.65s cubic-bezier(0.65, 0, 0.076, 1);
+  transition: all 0.8s cubic-bezier(0.65, 0, 0.076, 1);
 }
 
 .solution-data-text {
   opacity: 0;
-  margin-top: 0;
-  transition: all 0.65s cubic-bezier(0.65, 0, 0.076, 1);
+  margin-top: -20px;
+  transition: all 0.8s cubic-bezier(0.65, 0, 0.076, 1);
 }
 
 .solution-active {
@@ -187,7 +216,7 @@
 .solution-text {
   position: absolute;
   margin: 0 0rem 0 2.25rem;
-  top: 10px;
+  top: 12px;
   opacity: 0;
   z-index: 5000;
   transition: all 0.45s cubic-bezier(0.65, 0, 0.076, 1);
@@ -202,9 +231,12 @@
 
 .puzzle-solution-link {
   text-decoration: none;
-  color: black;
+  color: var(--font-primary);
   position: relative;
-  margin-top: -20px;
+  /* margin-top: -50px; */
+  margin-left: -20px;
+  font-weight: 600;
+  font-size: 18px;
 }
 
 /* .border::after {
@@ -257,7 +289,7 @@
 }
 
 .categoryWrapper h1 {
-  color: black;
+  color: var(--font-primary);
   font-size: 32px;
   letter-spacing: 2px;
   -webkit-transition: all 0.15s ease 0s;
@@ -277,7 +309,7 @@
   -webkit-appearance: none;
   border: none;
   background: none;
-  color: black;
+  color: var(--font-primary);
   width: 150px;
   height: 50px;
   font-size: 20px;
@@ -305,7 +337,7 @@
   width: 20px;
   height: 0;
 
-  border: 2px solid black;
+  border: 2px solid var(--font-primary);
   border-left: none;
   border-bottom: none;
 
@@ -326,7 +358,7 @@
   width: 20px;
   height: 0;
 
-  border: 2px solid black;
+  border: 2px solid var(--font-primary);
   border-right: none;
   border-bottom: none;
 
@@ -351,7 +383,7 @@
 
 .categoryWrapper:hover button > span > span:before {
   opacity: 1;
-  border-bottom: 2px solid black;
+  border-bottom: 2px solid var(--font-primary);
   width: calc(50%);
   height: 1px;
   transition: opacity 0s ease-out 0.29s, width 0.15s ease-out 0.3s;
@@ -369,7 +401,7 @@
 
 .categoryWrapper:hover button > span > span:after {
   opacity: 1;
-  border-bottom: 2px solid black;
+  border-bottom: 2px solid var(--font-primary);
   width: calc(50%);
   height: 1px;
   transition: opacity 0s ease-out 0.29s, width 0.15s ease-out 0.3s;
@@ -381,7 +413,7 @@
 }
 
 .categoryWrapper:hover button > span > span > span {
-  color: black;
+  color: var(--font-primary);
 }
 
 .categoryWrapper button > span > span > span:after {
