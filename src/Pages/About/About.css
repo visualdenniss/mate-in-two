@@ -1,0 +1,15 @@
+.about {
+  margin-left: 100px;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.about-container {
+  max-width: 400px;
+}
+
+.about-container > p {
+  margin-bottom: 20px;
+}

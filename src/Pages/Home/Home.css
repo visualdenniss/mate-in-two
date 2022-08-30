@@ -1,0 +1,409 @@
+.home {
+  /* border: 1px solid green; */
+  /* margin-left: 100px; */
+  width: auto;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  background: #f3f1ef;
+  flex-direction: column;
+}
+
+.title {
+  position: absolute;
+  top: 20px;
+  right: 50px;
+  font-size: 38px;
+}
+
+.wrapper {
+  display: flex;
+  /* border: 1px solid red; */
+  position: relative;
+}
+
+.board-component {
+  width: 100%;
+  max-width: 400px;
+  margin: 0px 20px;
+  height: 400px;
+  width: 400px;
+  /* border: 1px solid red; */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Info  */
+
+.info-component {
+  position: absolute;
+  bottom: 0;
+  left: -8rem;
+  font-size: 20px;
+  /* border: 1px solid blue; */
+  height: max-content;
+  width: 5.75rem;
+  cursor: pointer;
+}
+
+.info-content {
+  /* border: 1px solid red; */
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  height: auto;
+  margin-bottom: 4px;
+}
+
+.circle {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0;
+  width: calc(400px / 8);
+  height: calc(400px / 8);
+  /* background: #282936; */
+  border: 2px solid #282936;
+  /* border-radius: 1.625rem; */
+  transition: all 0.45s cubic-bezier(0.65, 0, 0.076, 1);
+}
+
+.info-content:hover .circle {
+  width: 100%;
+}
+
+.info-icon {
+  position: absolute;
+  top: 50%;
+  bottom: 0;
+  right: 0;
+  transform: translate(-1.125rem, -53%);
+  font-weight: 600;
+  font-size: 20px;
+}
+
+.info-text {
+  position: absolute;
+  margin: 0 2.25rem 0 0;
+  opacity: 0;
+  transition: all 0.45s cubic-bezier(0.65, 0, 0.076, 1);
+  font-weight: 600;
+  /* color: #fff; */
+}
+
+.info-content:hover .info-text {
+  opacity: 1;
+  font-weight: 600;
+}
+
+/* Solution  */
+
+.solution-component {
+  position: absolute;
+  top: 0;
+  right: -10.5rem;
+  font-size: 20px;
+  /* border: 1px solid blue; */
+  height: max-content;
+  width: 8.5rem;
+  /* width: 100%; */
+  cursor: pointer;
+}
+
+.solution-content {
+  /* border: 1px solid red; */
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  height: auto;
+  margin-bottom: 4px;
+}
+
+.border {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0;
+  width: calc(400px / 8);
+  /* width: 100%; */
+  height: calc(400px / 8);
+  /* height: 100%; */
+  background: #f3f1ef;
+  z-index: 1000;
+  /* background: #282936; */
+  border: 2px solid #282936;
+  /* border-radius: 1.625rem; */
+  transition: all 0.45s cubic-bezier(0.65, 0, 0.076, 1);
+}
+
+.active-border {
+  height: 100%;
+  width: 100%;
+}
+
+.solution-content:hover .border {
+  width: 100%;
+}
+
+.solution-icon {
+  position: absolute;
+  top: 45px;
+  bottom: 0;
+  left: 0;
+  transform: translate(1.25rem, -37px);
+  font-weight: 600;
+  font-size: 20px;
+}
+
+.solution-data {
+  /* margin-top: 80px; */
+  padding: 0px 20px;
+  opacity: 1;
+  /* border: 1px solid black; */
+  height: max-content;
+  position: absolute;
+  top: 0;
+  transition: all 0.65s cubic-bezier(0.65, 0, 0.076, 1);
+}
+
+.solution-data-text {
+  opacity: 0;
+  margin-top: 0;
+  transition: all 0.65s cubic-bezier(0.65, 0, 0.076, 1);
+}
+
+.solution-active {
+  margin-top: 60px;
+  opacity: 1;
+}
+
+.solution-text {
+  position: absolute;
+  margin: 0 0rem 0 2.25rem;
+  top: 10px;
+  opacity: 0;
+  z-index: 5000;
+  transition: all 0.45s cubic-bezier(0.65, 0, 0.076, 1);
+  font-weight: 600;
+  /* color: #fff; */
+}
+
+.solution-content:hover .solution-text {
+  opacity: 1;
+  font-weight: 600;
+}
+
+.puzzle-solution-link {
+  text-decoration: none;
+  color: black;
+  position: relative;
+  margin-top: -20px;
+}
+
+/* .border::after {
+  content: "";
+  width: 200%;
+  left: 10%;
+  height: calc(400px / 8);
+  position: absolute;
+  top: 0px;
+  z-index: -10000;
+} */
+
+/* PLUS  */
+
+.centerBox {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  /* height: 600px */
+  margin-top: 40px;
+}
+
+.categoryWrapper {
+  /* height: 310px;
+	width: 460px; */
+  background: url("http://ohlookawebsite.com/bathroomtestfull.jpg") no-repeat
+    center center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+}
+
+.categoryWrapper:after {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#a29ca9+0,95909b+99 */
+
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#a29ca9', endColorstr='#95909b',GradientType=1 ); /* IE6-9 fallback on horizontal gradient */
+  content: "";
+  opacity: 0;
+  -webkit-transition: opacity 0.9s ease 0s;
+}
+
+.categoryWrapper:hover:after {
+  opacity: 0.4;
+}
+
+.categoryWrapper h1 {
+  color: black;
+  font-size: 32px;
+  letter-spacing: 2px;
+  -webkit-transition: all 0.15s ease 0s;
+  position: relative;
+  z-index: 10;
+  font-weight: lighter;
+}
+
+.categoryWrapper:hover h1 {
+  /* transform: translateY(-10px); */
+  cursor: pointer;
+}
+
+.categoryWrapper button {
+  position: absolute;
+  transform: translatey(60px);
+  -webkit-appearance: none;
+  border: none;
+  background: none;
+  color: black;
+  width: 150px;
+  height: 50px;
+  font-size: 20px;
+  padding: 0;
+  margin: 0;
+  margin-top: -30px;
+  outline: none;
+  z-index: 10;
+}
+
+.categoryWrapper button span {
+  display: block;
+  position: relative;
+  line-height: 50px;
+  height: 50px;
+  cursor: pointer;
+  font-weight: 600;
+}
+
+.categoryWrapper button > span:after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 50%;
+  width: 20px;
+  height: 0;
+
+  border: 2px solid black;
+  border-left: none;
+  border-bottom: none;
+
+  transition: height 0.15s ease-out, width 0.15s ease-out 0.15s;
+}
+
+.categoryWrapper:hover button > span:after {
+  width: calc(50% - 1px);
+  height: calc(100% - 2px);
+  transition: width 0.15s ease-out, height 0.15s ease-out 0.15s;
+}
+
+.categoryWrapper button > span:before {
+  content: "";
+  position: absolute;
+  top: 0;
+  right: 50%;
+  width: 20px;
+  height: 0;
+
+  border: 2px solid black;
+  border-right: none;
+  border-bottom: none;
+
+  transition: height 0.15s ease-out, width 0.15s ease-out 0.15s;
+}
+
+.categoryWrapper:hover button > span:before {
+  width: calc(50% - 1px);
+  height: calc(100% - 2px);
+  transition: width 0.15s ease-out, height 0.15s ease-out 0.15s;
+}
+
+.categoryWrapper button > span > span:before {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  right: 0%;
+  width: 1px;
+  height: 1px;
+  opacity: 0;
+}
+
+.categoryWrapper:hover button > span > span:before {
+  opacity: 1;
+  border-bottom: 2px solid black;
+  width: calc(50%);
+  height: 1px;
+  transition: opacity 0s ease-out 0.29s, width 0.15s ease-out 0.3s;
+}
+
+.categoryWrapper button > span > span:after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0%;
+  width: 1px;
+  height: 1px;
+  opacity: 0;
+}
+
+.categoryWrapper:hover button > span > span:after {
+  opacity: 1;
+  border-bottom: 2px solid black;
+  width: calc(50%);
+  height: 1px;
+  transition: opacity 0s ease-out 0.29s, width 0.15s ease-out 0.3s;
+}
+
+.categoryWrapper button > span > span > span {
+  transition: color 0.15s ease-out 0.3s;
+  color: transparent;
+}
+
+.categoryWrapper:hover button > span > span > span {
+  color: black;
+}
+
+.categoryWrapper button > span > span > span:after {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  color: #1f2e4d;
+  content: attr(data-attr-span);
+  width: 0%;
+  height: 100%;
+  background: none;
+  white-space: nowrap;
+  text-align: center;
+  margin: auto;
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  transition: width 0.2s;
+}
+
+.categoryWrapper button:hover > span > span > span:after {
+  width: 100%;
+}
