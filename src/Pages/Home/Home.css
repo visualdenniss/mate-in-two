@@ -552,12 +552,16 @@
 
 @media screen and (max-width: 400px) {
   .info-data-active {
-    transform: translateX(-30%);
+    transform: translateX(-33%);
   }
 
   .solution-active {
     margin-top: 0px;
     opacity: 1;
-    transform: translateX(225%);
+    transform: translateX(230%);
+  }
+
+  .puzzle-solution-link {
+    font-size: 14px;
   }
 }
