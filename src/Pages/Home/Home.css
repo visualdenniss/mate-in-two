@@ -549,3 +549,15 @@
     font-size: 14px;
   }
 }
+
+@media screen and (max-width: 400px) {
+  .info-data-active {
+    transform: translateX(-30%);
+  }
+
+  .solution-active {
+    margin-top: 0px;
+    opacity: 1;
+    transform: translateX(225%);
+  }
+}

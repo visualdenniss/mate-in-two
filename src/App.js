@@ -56,6 +56,10 @@ const App = () => {
         setDarkMode(false)
     }
 
+    useEffect(()=>{
+        getPuzzle()
+    },[])
+
 
     return (
 
