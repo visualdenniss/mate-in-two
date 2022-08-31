@@ -36,3 +36,17 @@
   filter: grayscale(0%) opacity(1);
   filter: opacity(1);
 }
+
+@media screen and (max-width: 800px) {
+  .cats {
+    margin-left: 0px;
+    padding: 20px;
+  }
+
+  .cat-img {
+    max-width: 100%;
+    margin-bottom: 40px;
+    border: 2px solid var(--font-primary);
+    padding: 20px;
+  }
+}

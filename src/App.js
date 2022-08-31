@@ -5,6 +5,7 @@ import Sidebar from './Components/Sidebar/Sidebar'
 import Home from './Pages/Home/Home'
 import Cats from './Pages/Cats/Cats'
 import About from './Pages/About/About'
+import Theme from './Components/Theme/Theme'
 
 import './App.css'
 const App = () => {
@@ -40,6 +41,21 @@ const App = () => {
         setIsLoading(false)
     }
 
+    const [darkMode, setDarkMode] = useState(true)
+    const body = document.body 
+
+    const darkTheme = () => {
+        body.classList.remove('light')
+        body.classList.add('dark')
+        setDarkMode(true)
+    }
+
+    const lightTheme = () => {
+        body.classList.remove('dark')
+        body.classList.add('light')
+        setDarkMode(false)
+    }
+
 
     return (
 
@@ -48,6 +64,10 @@ const App = () => {
         <Router>
         <div className='app'>
             <Sidebar></Sidebar>
+            <Theme
+            darkTheme={darkTheme}
+            lightTheme={lightTheme}
+            ></Theme>
             <Routes>
             <Route exact path='/' 
             element={<Home 
@@ -61,7 +81,9 @@ const App = () => {
             puzzleYear={puzzleYear}
             isLoading={isLoading}></Home>}></Route>
             <Route path='/cats' element={ <Cats></Cats>}></Route>
-            <Route path='/about' element={ <About></About>}></Route>
+            <Route path='/about' element={ <About
+            darkMode={darkMode}
+            ></About>}></Route>
             </Routes>
         </div>
         </Router>

@@ -1,12 +1,18 @@
 import React, { useState, useRef, useEffect } from 'react'
 import ChessBoard from 'chessboardjsx'
-
+import useMediaQuery from "../../Hooks/useMediaQuery";
 import { motion } from 'framer-motion'
 
 import './Home.css'
 import { AiOutlinePlus } from 'react-icons/ai'
 import Loading from '../../Components/Loading/Loading'
 const Home = ({fen, puzzleId, getPuzzle,puzzleAuthor, puzzleSource, puzzleYear, isLoading}) => {
+
+    // Media 
+
+    const isDesktop = useMediaQuery('(min-width: 800px)');
+
+    // Reveal Info / Solution 
 
     const solutionRef = useRef()
     const infoRef = useRef()
@@ -57,7 +63,7 @@ const Home = ({fen, puzzleId, getPuzzle,puzzleAuthor, puzzleSource, puzzleYear, 
                 <div className="board-component">
                     {
                         isLoading? <Loading></Loading>  : 
-                        <ChessBoard position={fen} width={400} ></ChessBoard>
+                        <ChessBoard position={fen} width={isDesktop?400:300} ></ChessBoard>
                     }
                 </div>
                 <div className="solution-component"

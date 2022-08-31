@@ -1,8 +1,9 @@
-import React from 'react'
+import React, {useState, useEffect} from 'react'
 import {VscGithub} from 'react-icons/vsc'
 
 import './About.css'
-const About = () => {
+const About = ({darkMode}) => {
+
     return (
         <div className='about'>
             <div className="about-container"> 
@@ -23,7 +24,9 @@ const About = () => {
                         <a href="https://lichess.org/@/visualdennis"  
                         target="_blank"
                         className='contact-link'>
+                            { darkMode? <img src="lichess-dark.svg" alt="" /> : 
                             <img src="lichess.svg" alt="" />
+                            }
                         </a>
                     </li>
                 </ul>

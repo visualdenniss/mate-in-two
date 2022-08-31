@@ -14,7 +14,7 @@
 .title {
   position: absolute;
   top: 20px;
-  right: 50px;
+  right: 35px;
   font-size: 38px;
   color: var(--font-primary);
 }
@@ -49,6 +49,7 @@
   width: 5.75rem;
   cursor: pointer;
   color: var(--font-primary);
+  margin-bottom: -4px;
 }
 
 .info-content {
@@ -438,4 +439,113 @@
 
 .categoryWrapper button:hover > span > span > span:after {
   width: 100%;
+}
+
+@media screen and (max-width: 800px) {
+  .home {
+    height: max-content;
+    margin-top: 60px;
+    padding: 0px 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    background: var(--bg-primary);
+    flex-direction: column;
+  }
+
+  .title {
+    display: none;
+  }
+
+  .wrapper {
+    flex-direction: column;
+    align-items: center;
+    width: 100vw;
+    padding: 0px 20px;
+  }
+
+  .solution-component {
+    position: initial;
+    align-self: flex-start;
+    order: 2;
+    margin-left: 40px;
+  }
+
+  .info-component {
+    position: initial;
+    order: 1;
+    align-self: flex-end;
+    right: 0px;
+    margin-bottom: 80px;
+    margin-top: 200px;
+    margin-right: 40px;
+  }
+
+  .info-data {
+    position: absolute;
+    right: 0;
+    width: max-content;
+    text-align: left;
+    transform: translateX(100%);
+  }
+
+  .info-data-active {
+    opacity: 1;
+    top: 0;
+    transform: translateX(-100%);
+  }
+
+  .solution-data {
+    margin-top: 0px;
+    padding: 0px 20px;
+    /* opacity: 1; */
+    /* border: 1px solid black; */
+    height: max-content;
+    position: absolute;
+    top: 0;
+    transform: translateX(-100%);
+  }
+
+  .solution-data-text {
+    opacity: 0;
+    margin-top: 0px;
+  }
+
+  .solution-active {
+    margin-top: 0px;
+    opacity: 1;
+    transform: translateX(250%);
+  }
+
+  .puzzle-solution-link {
+    font-size: 16px;
+  }
+
+  .centerBox {
+    margin-top: -350px;
+  }
+}
+
+@media screen and (max-width: 500px) {
+  .solution-component {
+    margin-left: 0px;
+  }
+
+  .info-data-active {
+    transform: translateX(-35%);
+  }
+  .info-component {
+    margin-right: 0px;
+  }
+
+  .solution-active {
+    margin-top: 0px;
+    opacity: 1;
+    transform: translateX(230%);
+  }
+
+  .puzzle-solution-link {
+    font-size: 14px;
+  }
 }
