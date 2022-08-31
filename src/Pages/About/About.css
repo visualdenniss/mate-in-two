@@ -1,5 +1,5 @@
 .about {
-  margin-left: 100px;
+  margin-left: 0px;
   height: 100vh;
   display: flex;
   justify-content: center;
@@ -82,7 +82,6 @@
 
 @media screen and (max-width: 800px) {
   .about {
-    margin-left: 0px;
     padding: 20px;
   }
 }
