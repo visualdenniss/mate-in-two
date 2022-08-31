@@ -1,0 +1,44 @@
+.theme {
+  position: fixed;
+  bottom: 30px;
+  right: 35px;
+  z-index: 5000;
+  display: flex;
+  flex-direction: column;
+}
+.theme button {
+  outline: none;
+  width: 20px;
+  height: 20px;
+  margin-bottom: 10px;
+}
+
+.dark-btn {
+  background: var(--font);
+  border: 2px solid var(--bg);
+}
+
+.light-btn {
+  background: var(--bg);
+  border: 2px solid var(--font);
+}
+
+@media screen and (max-width: 800px) {
+  .theme {
+    position: fixed;
+    bottom: 0px;
+    right: 50%;
+    transform: translateX(50%);
+    z-index: 5000;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    background: var(--bg-primary);
+    width: 100%;
+    padding-top: 5px;
+  }
+
+  .theme button {
+    margin-left: 10px;
+  }
+}
