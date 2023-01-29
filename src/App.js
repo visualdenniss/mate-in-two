@@ -5,6 +5,7 @@ import Sidebar from './Components/Sidebar/Sidebar'
 import Home from './Pages/Home/Home'
 import Cats from './Pages/Cats/Cats'
 import About from './Pages/About/About'
+import Composers from './Pages/Composers/Composers'
 import Theme from './Components/Theme/Theme'
 
 import './App.css'
@@ -19,7 +20,7 @@ const App = () => {
     const [puzzleSourceName, setPuzzleSourceName] = useState('')
     const [puzzleYear,setPuzzleYear] = useState('')
 
-    const url = 'https://mate-in-two.herokuapp.com/'
+    const url = 'https://api-mate-in-two.onrender.com/'
 
     
     const getPuzzle = async () => {
@@ -88,6 +89,7 @@ const App = () => {
             <Route path='/about' element={ <About
             darkMode={darkMode}
             ></About>}></Route>
+            <Route path='/composers' element={<Composers></Composers>}></Route>
             </Routes>
         </div>
         </Router>
