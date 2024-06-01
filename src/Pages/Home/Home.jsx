@@ -121,7 +121,7 @@ const Home = () => {
                   </p>
                   <div className="puzzle-source">
                     <span>Source:</span> {currentPuzzle?.puzzleSource?.name},{" "}
-                    {currentPuzzle?.puzzleSource?.date.year}
+                    {currentPuzzle?.puzzleSource?.date?.year}
                   </div>
                 </>
               )}
