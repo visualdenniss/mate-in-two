@@ -70,10 +70,18 @@ const Home = () => {
   // Initial Load
   useEffect(() => {
     const nextPuzzles = getLocalStorage("NextPuzzles", []);
-    if (nextPuzzles.length === 0) {
-      fetchNewPuzzles(true).then(() => getNextPuzzle());
+    const storedCurrentPuzzle = getLocalStorage("currentPuzzle", null);
+
+    if (!storedCurrentPuzzle) {
+      // Initial load, no current puzzle stored
+      if (nextPuzzles.length === 0) {
+        fetchNewPuzzles(true).then(() => getNextPuzzle());
+      } else {
+        getNextPuzzle();
+      }
     } else {
-      getNextPuzzle();
+      // Use the stored current puzzle
+      setCurrentPuzzle(storedCurrentPuzzle);
     }
   }, []);
 
