@@ -5,7 +5,7 @@
   gap: 24px;
 }
 
-.puzzle-container .right {
+.puzzle-details {
   display: flex;
   justify-content: center;
   flex-direction: column;
@@ -13,14 +13,14 @@
   gap: 8px;
 }
 
-.puzzle-container .right > * {
+.puzzle-details > * {
   color: var(--font-primary);
   font-weight: 600;
   font-size: 18px;
   padding: 2px;
 }
 
-.puzzle-container .right > a {
+.puzzle-details > a {
   font-size: 24px;
   cursor: pointer;
   text-decoration: none;
@@ -28,7 +28,7 @@
   padding: 10px;
 }
 
-.puzzle-container .right > a:after {
+.puzzle-details > a:after {
   content: "";
   position: absolute;
   display: block;
@@ -42,6 +42,6 @@
   transform: translateX(-50%);
 }
 
-.puzzle-container .right > a:hover:after {
+.puzzle-details > a:hover:after {
   width: 100%;
 }

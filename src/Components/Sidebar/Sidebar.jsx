@@ -1,8 +1,8 @@
 import React, { useRef } from "react";
 import { Link } from "react-router-dom";
-
+import { FaBookmark } from "react-icons/fa6";
 import { FaCat } from "react-icons/fa";
-import { RiMenu2Line, RiHistoryFill, RiBookmarkFill } from "react-icons/ri";
+import { RiMenu2Line, RiHistoryFill } from "react-icons/ri";
 import { AiFillFire } from "react-icons/ai";
 
 import "./Sidebar.css";
@@ -16,7 +16,7 @@ const Sidebar = () => {
   return (
     <div className="sidebar">
       <div className="toggle-icon" onClick={() => toggleNav()}>
-        <RiMenu2Line></RiMenu2Line>
+        <RiMenu2Line />
       </div>
       <ul ref={LinksDisplayRef} className="sidebar-nav">
         <li className="nav-item">
@@ -27,28 +27,28 @@ const Sidebar = () => {
         <li className="nav-item">
           <Link className="nav-link" to="/cats">
             <div className="icon">
-              <FaCat></FaCat>
+              <FaCat />
             </div>
           </Link>
         </li>
         <li className="nav-item">
           <Link className="nav-link" to="/about">
             <div className="icon">
-              <AiFillFire></AiFillFire>
+              <AiFillFire />
             </div>
           </Link>
         </li>
         <li className="nav-item">
           <Link className="nav-link" to="/history">
             <div className="icon">
-              <RiHistoryFill></RiHistoryFill>
+              <RiHistoryFill />
             </div>
           </Link>
         </li>
         <li className="nav-item">
           <Link className="nav-link" to="/bookmarks">
             <div className="icon">
-              <RiBookmarkFill></RiBookmarkFill>
+              <FaBookmark />
             </div>
           </Link>
         </li>

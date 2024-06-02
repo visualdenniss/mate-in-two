@@ -1,12 +1,10 @@
-.puzzle-item {
-}
-
 .puzzle-actions-icons {
   display: flex;
   padding: 10px 5px;
-  gap: 16px;
+  gap: 14px;
   justify-content: flex-end;
   position: relative;
+  margin-top: 8px;
 }
 .puzzle-item > p {
   text-align: center;
@@ -29,7 +27,8 @@
   transition: all 0.45s cubic-bezier(0.65, 0, 0.076, 1);
 }
 
-.puzzle-actions-icons > button:hover {
+.puzzle-actions-icons > button:hover,
+.puzzle-actions-icons > a:hover {
   color: var(--font-primary);
   filter: grayscale(0%) opacity(1);
   filter: opacity(1);

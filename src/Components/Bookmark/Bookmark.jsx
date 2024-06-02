@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { RiBookmarkFill, RiBookmarkLine } from "react-icons/ri";
+import { FaBookmark, FaRegBookmark } from "react-icons/fa6";
 import { getLocalStorage, setLocalStorage } from "../../lib/localStorage";
 import { toast } from "sonner";
 
@@ -26,7 +26,7 @@ const Bookmark = ({ id }) => {
 
   return (
     <button onClick={handleBookmark} key={id}>
-      {isBookmarked ? <RiBookmarkFill /> : <RiBookmarkLine />}
+      {isBookmarked ? <FaBookmark /> : <FaRegBookmark />}
     </button>
   );
 };

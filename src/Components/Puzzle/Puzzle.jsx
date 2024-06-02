@@ -19,23 +19,25 @@ const Puzzle = () => {
     return res.data;
   };
 
+  const findPuzzleById = (puzzles, id) => {
+    return puzzles.find((puzzle) => puzzle.puzzleId === id);
+  };
+
   const getPuzzle = async () => {
     try {
       setIsLoading(true);
       const history = getLocalStorage("History", []);
-      if (history.find((puzzle) => puzzle.puzzleId === id)) {
-        setPuzzle(history.find((puzzle) => puzzle.puzzleId === id));
-      } else {
-        const nextPuzzles = getLocalStorage("NextPuzzles", []);
-        if (nextPuzzles.find((puzzle) => puzzle.puzzleId === id)) {
-          setPuzzle(nextPuzzles.find((puzzle) => puzzle.puzzleId === id));
-        } else {
-          const puzzle = await getPuzzleFromDB();
-          console.log(puzzle);
-          if (!puzzle) throw new Error("Puzzle not Found");
-          setPuzzle(puzzle);
-        }
+      const nextPuzzles = getLocalStorage("NextPuzzles", []);
+
+      let foundPuzzle =
+        findPuzzleById(history, id) || findPuzzleById(nextPuzzles, id);
+
+      if (!foundPuzzle) {
+        foundPuzzle = await getPuzzleFromDB();
+        if (!foundPuzzle) throw new Error("Puzzle not found");
       }
+
+      setPuzzle(foundPuzzle);
     } catch (err) {
       console.log(err);
       return;
@@ -50,38 +52,44 @@ const Puzzle = () => {
 
   // Media
   const isDesktop = useMediaQuery("(min-width: 800px)");
+
+  if (isLoading) {
+    return (
+      <div className="page">
+        <Loading />
+      </div>
+    );
+  }
+
+  if (!puzzle.fen) {
+    return (
+      <div className="page">
+        <p>Oopsie Doopsie! Puzzle not found</p>
+      </div>
+    );
+  }
   return (
     <div className="page">
-      {isLoading ? (
-        <Loading />
-      ) : (
-        <div>
-          {puzzle.fen && (
-            <div className="puzzle-container">
-              <div className="left">
-                <Chessboard
-                  position={
-                    puzzle.fen ||
-                    "2R5/4bppk/1p1p3Q/5R1P/4P3/5P2/r4q1P/7K b - - 6 50"
-                  }
-                  width={isDesktop ? 400 : 300}
-                />
-              </div>
-              <div className="right">
-                <p>{puzzle?.puzzleAuthor?.join(", ")} </p>
-                <p>{puzzle?.puzzleSource?.date?.year} </p>
-                <p>{puzzle?.puzzleSource?.name} </p>
-                <a
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  href={` https://yacpdb.org/#${puzzle.puzzleId}`}
-                >
-                  See Solution
-                </a>
-              </div>
-            </div>
-          )}
-          {!puzzle.fen && <p>Oopsie Doopsie! Puzzle not found</p>}
+      {puzzle.fen && (
+        <div className="puzzle-container">
+          <Chessboard
+            position={
+              puzzle.fen || "2R5/4bppk/1p1p3Q/5R1P/4P3/5P2/r4q1P/7K b - - 6 50"
+            }
+            width={isDesktop ? 400 : 300}
+          />
+          <div className="puzzle-details">
+            <p>{puzzle?.puzzleAuthor?.join(", ")} </p>
+            <p>{puzzle?.puzzleSource?.date?.year} </p>
+            <p>{puzzle?.puzzleSource?.name} </p>
+            <a
+              target="_blank"
+              rel="noopener noreferrer"
+              href={` https://yacpdb.org/#${puzzle.puzzleId}`}
+            >
+              See Solution
+            </a>
+          </div>
         </div>
       )}
     </div>
