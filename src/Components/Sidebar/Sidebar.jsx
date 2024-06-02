@@ -46,7 +46,7 @@ const Sidebar = () => {
           </Link>
         </li>
         <li className="nav-item">
-          <Link className="nav-link" to="/history">
+          <Link className="nav-link" to="/bookmarks">
             <div className="icon">
               <RiBookmarkFill></RiBookmarkFill>
             </div>

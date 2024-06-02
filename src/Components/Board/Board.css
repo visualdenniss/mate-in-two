@@ -1,0 +1,36 @@
+.puzzle-item {
+}
+
+.puzzle-actions-icons {
+  display: flex;
+  padding: 10px 5px;
+  gap: 16px;
+  justify-content: flex-end;
+  position: relative;
+}
+.puzzle-item > p {
+  text-align: center;
+  padding: 20px;
+  font-size: 18px;
+  max-width: 300px;
+}
+
+.puzzle-actions-icons > button,
+.puzzle-actions-icons > a {
+  cursor: pointer;
+  font-size: 24px;
+  display: grid;
+  place-items: center;
+  color: var(--font-primary);
+  background: transparent;
+  border: none;
+  filter: grayscale(100%) opacity(0.7);
+  filter: opacity(0.5);
+  transition: all 0.45s cubic-bezier(0.65, 0, 0.076, 1);
+}
+
+.puzzle-actions-icons > button:hover {
+  color: var(--font-primary);
+  filter: grayscale(0%) opacity(1);
+  filter: opacity(1);
+}

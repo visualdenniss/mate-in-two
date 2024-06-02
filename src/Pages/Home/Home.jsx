@@ -5,16 +5,7 @@ import axios from "axios";
 import "./Home.css";
 import { AiOutlinePlus } from "react-icons/ai";
 import Loading from "../../Components/Loading/Loading";
-
-// LocalStorage Helpers
-const getLocalStorage = (key, initialValue) => {
-  const savedItem = localStorage.getItem(key);
-  return savedItem ? JSON.parse(savedItem) : initialValue;
-};
-
-const setLocalStorage = (key, value) => {
-  localStorage.setItem(key, JSON.stringify(value));
-};
+import { getLocalStorage, setLocalStorage } from "../../lib/localStorage";
 
 const Home = () => {
   const [currentPuzzle, setCurrentPuzzle] = useState(() =>
@@ -55,7 +46,7 @@ const Home = () => {
       setCurrentPuzzle(nextPuzzle);
       setLocalStorage("currentPuzzle", nextPuzzle);
       setLocalStorage("NextPuzzles", nextPuzzles);
-      setLocalStorage("History", [...history, nextPuzzle]);
+      setLocalStorage("History", [nextPuzzle, ...history]);
 
       if (nextPuzzles.length < 10 && !isFetching) {
         setIsFetching(true);

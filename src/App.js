@@ -9,6 +9,8 @@ import Composers from "./Pages/Composers/Composers";
 import Theme from "./Components/Theme/Theme";
 
 import "./App.css";
+import Bookmarks from "./Pages/Bookmarks/Bookmarks";
+import Puzzle from "./Components/Puzzle/Puzzle";
 const App = () => {
   const [darkMode, setDarkMode] = useState(true);
   const body = document.body;
@@ -32,8 +34,10 @@ const App = () => {
         <Theme darkTheme={darkTheme} lightTheme={lightTheme}></Theme>
         <Routes>
           <Route exact path="/" element={<Home></Home>}></Route>
+          <Route exact path="/:id" element={<Puzzle></Puzzle>}></Route>
           <Route path="/cats" element={<Cats></Cats>}></Route>
           <Route path="/history" element={<History></History>}></Route>
+          <Route path="/bookmarks" element={<Bookmarks></Bookmarks>}></Route>
           <Route
             path="/about"
             element={<About darkMode={darkMode}></About>}

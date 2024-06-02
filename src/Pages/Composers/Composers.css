@@ -1,11 +1,13 @@
 .composers {
   margin: 0 auto;
-  height: 100vh;
+  min-height: 100vh;
+  height: 100%;
   color: var(--font-primary);
-  max-width: 900px;
+  /* max-width: 900px; */
   margin-left: 100px;
   margin-top: 100px;
   margin-right: 100px;
+  padding-bottom: 80px;
 }
 
 .composerImg {

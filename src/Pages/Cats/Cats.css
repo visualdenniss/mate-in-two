@@ -1,11 +1,11 @@
-.cats {
+/* .cats {
   margin-left: 0px;
   height: 100vh;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-}
+} */
 
 .cats-header {
   margin-bottom: 30px;
