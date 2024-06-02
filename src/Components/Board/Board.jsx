@@ -20,7 +20,7 @@ const Board = ({ id, fen }) => {
       <div className="puzzle-actions-icons">
         <Info id={id} />
         <CopyClipBoard id={id} />
-        <Download fen={fen} />
+        <Download fen={fen} id={id} />
         <Bookmark id={id} />
       </div>
     </li>
