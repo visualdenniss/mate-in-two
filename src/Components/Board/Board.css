@@ -2,10 +2,10 @@
   display: flex;
   padding: 10px 5px;
   gap: 14px;
-  justify-content: flex-end;
   position: relative;
   margin-top: 8px;
 }
+
 .puzzle-item > p {
   text-align: center;
   padding: 20px;

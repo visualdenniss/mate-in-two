@@ -25,7 +25,7 @@ const Bookmark = ({ id }) => {
   };
 
   return (
-    <button onClick={handleBookmark} key={id}>
+    <button style={{ marginLeft: "auto" }} onClick={handleBookmark} key={id}>
       {isBookmarked ? <FaBookmark /> : <FaRegBookmark />}
     </button>
   );

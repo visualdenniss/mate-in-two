@@ -22,7 +22,15 @@ const Home = () => {
       if (showLoading) {
         setIsLoading(true);
       }
-      const res = await axios.get(url);
+      const historyIdList = getLocalStorage("History", []).map(
+        (history) => history.puzzleId,
+      );
+      const res = await axios.get(url, {
+        params: {
+          exclude:
+            historyIdList.length > 0 ? historyIdList.join(",") : undefined,
+        },
+      });
       const newPuzzles = res.data;
       const nextPuzzles = getLocalStorage("NextPuzzles", []);
       setLocalStorage("NextPuzzles", [...nextPuzzles, ...newPuzzles]);
