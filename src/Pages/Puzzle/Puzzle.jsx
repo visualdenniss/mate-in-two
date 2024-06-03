@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import { getLocalStorage } from "../../lib/localStorage";
-import Loading from "../Loading/Loading";
+import Loading from "../../Components/Loading/Loading";
 import axios from "axios";
 import Chessboard from "chessboardjsx";
 import useMediaQuery from "../../Hooks/useMediaQuery";

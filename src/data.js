@@ -1,80 +1,110 @@
 const composers = [
   {
-    composerName: "Loyd",
-    composerImg: "./assets/composers/Loyd.jpg",
+    composerName: "Sam Loyd",
+    composerImg: "Loyd.jpg",
     composerId: "0",
+    composerInfo:
+      "Samuel Loyd (January 30, 1841 – April 10, 1911[1]) was an American chess player, chess composer, puzzle author, and recreational mathematician. Loyd was born in Philadelphia but raised in New York City.",
   },
   {
     composerName: "Nabokov",
-    composerImg: "./assets/composers/nabokov.jpeg",
+    composerImg: "nabokov.jpeg",
     composerId: "1",
+    composerInfo:
+      "Samuel Loyd (January 30, 1841 – April 10, 1911[1]) was an American chess player, chess composer, puzzle author, and recreational mathematician. Loyd was born in Philadelphia but raised in New York City.",
   },
   {
     composerName: "Otto",
-    composerImg: "./assets/composers/Otto.jpg",
+    composerImg: "Otto.jpg",
     composerId: "2",
+    composerInfo:
+      "Samuel Loyd (January 30, 1841 – April 10, 1911[1]) was an American chess player, chess composer, puzzle author, and recreational mathematician. Loyd was born in Philadelphia but raised in New York City.",
   },
   {
     composerName: "Philidor",
-    composerImg: "./assets/composers/Philidor.jpg",
+    composerImg: "Philidor.jpg",
     composerId: "3",
+    composerInfo:
+      "Samuel Loyd (January 30, 1841 – April 10, 1911[1]) was an American chess player, chess composer, puzzle author, and recreational mathematician. Loyd was born in Philadelphia but raised in New York City.",
   },
   {
     composerName: "Troitzky",
-    composerImg: "./assets/composers/Troitzky.jpg",
+    composerImg: "Troitzky.jpg",
     composerId: "4",
+    composerInfo:
+      "Samuel Loyd (January 30, 1841 – April 10, 1911[1]) was an American chess player, chess composer, puzzle author, and recreational mathematician. Loyd was born in Philadelphia but raised in New York City.",
   },
   {
     composerName: "Troitzky",
-    composerImg: "./assets/composers/BairdEdith-2.jpg",
+    composerImg: "BairdEdith-2.jpg",
     composerId: "4",
+    composerInfo:
+      "Samuel Loyd (January 30, 1841 – April 10, 1911[1]) was an American chess player, chess composer, puzzle author, and recreational mathematician. Loyd was born in Philadelphia but raised in New York City.",
   },
   {
     composerName: "Troitzky",
-    composerImg: "./assets/composers/benko.jpg",
+    composerImg: "benko.jpg",
     composerId: "4",
+    composerInfo:
+      "Samuel Loyd (January 30, 1841 – April 10, 1911[1]) was an American chess player, chess composer, puzzle author, and recreational mathematician. Loyd was born in Philadelphia but raised in New York City.",
   },
   {
     composerName: "Troitzky",
-    composerImg: "./assets/composers/Comins_Mansfield_1.png",
+    composerImg: "Comins_Mansfield_1.png",
     composerId: "4",
+    composerInfo:
+      "Samuel Loyd (January 30, 1841 – April 10, 1911[1]) was an American chess player, chess composer, puzzle author, and recreational mathematician. Loyd was born in Philadelphia but raised in New York City.",
   },
   {
     composerName: "Troitzky",
-    composerImg: "./assets/composers/HenriRinck.jpg",
+    composerImg: "HenriRinck.jpg",
     composerId: "4",
+    composerInfo:
+      "Samuel Loyd (January 30, 1841 – April 10, 1911[1]) was an American chess player, chess composer, puzzle author, and recreational mathematician. Loyd was born in Philadelphia but raised in New York City.",
   },
 
   {
     composerName: "Troitzky",
-    composerImg: "./assets/composers/Erkel_Ferenc_Györgyi_Alajos.jpg",
+    composerImg: "Erkel_Ferenc_Györgyi_Alajos.jpg",
     composerId: "4",
+    composerInfo:
+      "Samuel Loyd (January 30, 1841 – April 10, 1911[1]) was an American chess player, chess composer, puzzle author, and recreational mathematician. Loyd was born in Philadelphia but raised in New York City.",
   },
   {
     composerName: "Troitzky",
-    composerImg: "./assets/composers/reti.png",
+    composerImg: "reti.png",
     composerId: "4",
+    composerInfo:
+      "Samuel Loyd (January 30, 1841 – April 10, 1911[1]) was an American chess player, chess composer, puzzle author, and recreational mathematician. Loyd was born in Philadelphia but raised in New York City.",
   },
   {
     composerName: "Troitzky",
-    composerImg: "./assets/composers/benko.jpg",
+    composerImg: "benko.jpg",
     composerId: "4",
+    composerInfo:
+      "Samuel Loyd (January 30, 1841 – April 10, 1911[1]) was an American chess player, chess composer, puzzle author, and recreational mathematician. Loyd was born in Philadelphia but raised in New York City.",
   },
   {
     composerName: "Philidor",
-    composerImg: "./assets/composers/Philidor.jpg",
+    composerImg: "Philidor.jpg",
     composerId: "3",
+    composerInfo:
+      "Samuel Loyd (January 30, 1841 – April 10, 1911[1]) was an American chess player, chess composer, puzzle author, and recreational mathematician. Loyd was born in Philadelphia but raised in New York City.",
   },
 
   {
     composerName: "Nabokov",
-    composerImg: "./assets/composers/nabokov.jpeg",
+    composerImg: "nabokov.jpeg",
     composerId: "1",
+    composerInfo:
+      "Samuel Loyd (January 30, 1841 – April 10, 1911[1]) was an American chess player, chess composer, puzzle author, and recreational mathematician. Loyd was born in Philadelphia but raised in New York City.",
   },
   {
     composerName: "Otto",
-    composerImg: "./assets/composers/Otto.jpg",
+    composerImg: "Otto.jpg",
     composerId: "2",
+    composerInfo:
+      "Samuel Loyd (January 30, 1841 – April 10, 1911[1]) was an American chess player, chess composer, puzzle author, and recreational mathematician. Loyd was born in Philadelphia but raised in New York City.",
   },
 ];
 

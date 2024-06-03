@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 import { composers } from "../../data";
 import "./Composers.css";
@@ -11,9 +12,15 @@ const Composers = () => {
       <ResponsiveMasonry columnsCountBreakPoints={{ 350: 2, 750: 4, 1800: 6 }}>
         <Masonry gutter="20px">
           {composers.map((composer) => (
-            <div className="img-container">
-              <img className="composerImg" src={composer.composerImg}></img>
-            </div>
+            <Link to={`/composers/${composer.composerId}`}>
+              <div className="composer-img-container">
+                <img
+                  className="composerImg"
+                  src={`../assets/composers/${composer.composerImg}`}
+                ></img>
+                <div className="composer-details">{composer.composerName}</div>
+              </div>
+            </Link>
           ))}
         </Masonry>
       </ResponsiveMasonry>

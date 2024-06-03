@@ -1,0 +1,29 @@
+.composer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 40px;
+}
+
+.back-link {
+  color: var(--font-primary);
+  font-size: 32px;
+  margin-bottom: 10px;
+}
+.composer img {
+  max-width: 300px;
+}
+
+.composer-info {
+  font-size: 18px;
+  max-width: 500px;
+  display: grid;
+  gap: 20px;
+}
+
+@media screen and (max-width: 750px) {
+  .composer {
+    flex-direction: column;
+    text-align: center;
+  }
+}

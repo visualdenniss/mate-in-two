@@ -10,7 +10,8 @@ import Theme from "./Components/Theme/Theme";
 
 import "./App.css";
 import Bookmarks from "./Pages/Bookmarks/Bookmarks";
-import Puzzle from "./Components/Puzzle/Puzzle";
+import Puzzle from "./Pages/Puzzle/Puzzle";
+import Composer from "./Pages/Composer/Composer";
 const App = () => {
   const [darkMode, setDarkMode] = useState(true);
   const body = document.body;
@@ -43,6 +44,7 @@ const App = () => {
             element={<About darkMode={darkMode}></About>}
           ></Route>
           <Route path="/composers" element={<Composers></Composers>}></Route>
+          <Route path="/composers/:id" element={<Composer></Composer>}></Route>
         </Routes>
       </div>
     </Router>
