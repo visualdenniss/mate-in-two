@@ -1,6 +1,6 @@
 import React, { useRef } from "react";
 import { Link } from "react-router-dom";
-import { FaBookmark } from "react-icons/fa6";
+import { FaBookmark, FaChessKing } from "react-icons/fa6";
 import { FaCat } from "react-icons/fa";
 import { RiMenu2Line, RiHistoryFill } from "react-icons/ri";
 import { AiFillFire } from "react-icons/ai";
@@ -49,6 +49,13 @@ const Sidebar = () => {
           <Link className="nav-link" to="/bookmarks">
             <div className="icon">
               <FaBookmark />
+            </div>
+          </Link>
+        </li>
+        <li className="nav-item">
+          <Link className="nav-link" to="/composers">
+            <div className="icon">
+              <FaChessKing />
             </div>
           </Link>
         </li>
