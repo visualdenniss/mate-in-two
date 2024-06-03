@@ -12,7 +12,8 @@ const Puzzle = () => {
   const [isLoading, setIsLoading] = useState(false);
   const [puzzle, setPuzzle] = useState({});
 
-  const url = `http://localhost:5000/${id}`;
+  const url = `https://api-mate-in-two.onrender.com/${id}`;
+  // const url = `http://localhost:5000/${id}`;``
 
   const getPuzzleFromDB = async () => {
     const res = await axios.get(url);

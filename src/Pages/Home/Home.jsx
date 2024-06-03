@@ -14,7 +14,8 @@ const Home = () => {
   const [isLoading, setIsLoading] = useState(false);
   const [isFetching, setIsFetching] = useState(false);
 
-  const url = "http://localhost:5000/";
+  const url = "https://api-mate-in-two.onrender.com/";
+  // const url = "http://localhost:5000/";
 
   // Fetch New Puzzles
   const fetchNewPuzzles = async (showLoading = true) => {
