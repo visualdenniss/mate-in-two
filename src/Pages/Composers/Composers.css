@@ -23,7 +23,7 @@
 
 .composer-details {
   position: absolute;
-  bottom: -80px;
+  transform: translateY(100%);
   padding: 20px;
   border: 1px solid var(--bg-primary);
   background-color: var(--bg-primary);
@@ -36,5 +36,5 @@
 }
 
 .composer-img-container:hover .composer-details {
-  bottom: 0px;
+  transform: translateY(-100%);
 }

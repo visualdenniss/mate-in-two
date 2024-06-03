@@ -15,7 +15,7 @@ const History = () => {
     currentPage * itemsPerPage,
     historyPuzzles.length,
   ); // Ensure it does not exceed total items
-  const indexOfFirstItem = (currentPage - 1) * itemsPerPage; // Correct calculation for first item index
+  const indexOfFirstItem = (currentPage - 1) * itemsPerPage;
   const currentItems = historyPuzzles.slice(indexOfFirstItem, indexOfLastItem); // Slice the correct range of items
 
   // Change page

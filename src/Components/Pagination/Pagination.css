@@ -15,7 +15,6 @@
 
 .pagination a.active {
   border: 2px solid var(--font-primary);
-  color: white;
 }
 
 .pagination a:hover:not(.active) {
