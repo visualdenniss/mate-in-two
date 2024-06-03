@@ -12,11 +12,12 @@
     "framer-motion": "^7.2.1",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
-    "react-icons": "^4.4.0",
+    "react-icons": "^4.12.0",
     "react-responsive-masonry": "^2.1.5",
     "react-router-dom": "^6.3.0",
     "react-scripts": "5.0.1",
     "sass": "^1.54.6",
+    "sonner": "^1.4.41",
     "web-vitals": "^2.1.4"
   },
   "scripts": {

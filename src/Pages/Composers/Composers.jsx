@@ -1,27 +1,31 @@
-import React from 'react'
+import React from "react";
+import { Link } from "react-router-dom";
 
-import { composers } from '../../data'
-import './Composers.css'
+import { composers } from "../../data";
+import "./Composers.css";
 
-import Masonry, {ResponsiveMasonry} from 'react-responsive-masonry'
+import Masonry, { ResponsiveMasonry } from "react-responsive-masonry";
 
 const Composers = () => {
-    return (
-        <div className='composers'>
+  return (
+    <div className="composers">
+      <ResponsiveMasonry columnsCountBreakPoints={{ 350: 2, 750: 4, 1800: 6 }}>
+        <Masonry gutter="20px">
+          {composers.map((composer) => (
+            <Link to={`/composers/${composer.composerId}`}>
+              <div className="composer-img-container">
+                <img
+                  className="composerImg"
+                  src={`../assets/composers/${composer.composerImg}`}
+                ></img>
+                <div className="composer-details">{composer.composerName}</div>
+              </div>
+            </Link>
+          ))}
+        </Masonry>
+      </ResponsiveMasonry>
+    </div>
+  );
+};
 
-            <ResponsiveMasonry
-            columnsCountBreakPoints={{350: 2, 750: 4, 1800: 6}}>
-                <Masonry gutter="20px">
-            {composers.map((composer)=>(
-                <div className="img-container">
-                    <img className="composerImg" src={composer.composerImg}></img>
-                </div>
-            ))}
-                </Masonry>
-            </ResponsiveMasonry>
-            
-        </div>
-    )
-}
-
-export default Composers
+export default Composers;

@@ -1,12 +1,59 @@
 .app {
   /* border: 1px solid red; */
-  height: 100%;
+  min-height: 100vh;
   background: var(--bg-primary);
-  overflow: hidden;
+  overflow-x: hidden;
+}
+
+.page {
+  min-width: 100vw;
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: var(--bg-primary);
+  padding: 80px 40px;
+  color: var(--font-primary);
+  flex-direction: column;
+}
+
+.puzzles-grid {
+  display: grid;
+  place-items: center;
+  gap: 40px;
+  list-style-type: none;
+}
+
+.one-column {
+  grid-template-columns: 1fr;
+}
+
+.two-columns {
+  grid-template-columns: repeat(2, 1fr);
+}
+
+.three-columns {
+  grid-template-columns: repeat(3, 1fr);
 }
 
 @media screen and (max-width: 800px) {
   .app {
-    height: 140vh;
+    height: 100%;
+    min-height: 100vh;
+  }
+}
+
+@media screen and (max-width: 1200px) {
+  .two-columns,
+  .three-columns {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media screen and (max-width: 880px) {
+  .one-column,
+  .two-columns,
+  .three-columns {
+    grid-template-columns: 1fr;
   }
 }

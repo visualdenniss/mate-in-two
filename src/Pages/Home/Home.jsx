@@ -1,26 +1,96 @@
 import React, { useState, useRef, useEffect } from "react";
 import ChessBoard from "chessboardjsx";
 import useMediaQuery from "../../Hooks/useMediaQuery";
-import { motion } from "framer-motion";
-
+import axios from "axios";
 import "./Home.css";
 import { AiOutlinePlus } from "react-icons/ai";
 import Loading from "../../Components/Loading/Loading";
-const Home = ({
-  fen,
-  puzzleId,
-  getPuzzle,
-  puzzleAuthor,
-  puzzleSource,
-  puzzleYear,
-  isLoading,
-}) => {
-  // Media
+import { getLocalStorage, setLocalStorage } from "../../lib/localStorage";
 
+const Home = () => {
+  const [currentPuzzle, setCurrentPuzzle] = useState(() =>
+    getLocalStorage("currentPuzzle", {}),
+  );
+  const [isLoading, setIsLoading] = useState(false);
+  const [isFetching, setIsFetching] = useState(false);
+
+  const url = "https://api-mate-in-two.onrender.com/";
+  // const url = "http://localhost:5000/";
+
+  // Fetch New Puzzles
+  const fetchNewPuzzles = async (showLoading = true) => {
+    try {
+      if (showLoading) {
+        setIsLoading(true);
+      }
+      const historyIdList = getLocalStorage("History", []).map(
+        (history) => history.puzzleId,
+      );
+      const res = await axios.get(url, {
+        params: {
+          exclude:
+            historyIdList.length > 0 ? historyIdList.join(",") : undefined,
+        },
+      });
+      const newPuzzles = res.data;
+      const nextPuzzles = getLocalStorage("NextPuzzles", []);
+      setLocalStorage("NextPuzzles", [...nextPuzzles, ...newPuzzles]);
+    } catch (err) {
+      console.error(err);
+    } finally {
+      if (showLoading) {
+        setIsLoading(false);
+      }
+      setIsFetching(false);
+    }
+  };
+
+  // Get Next Puzzle
+  const getNextPuzzle = () => {
+    const nextPuzzles = getLocalStorage("NextPuzzles", []);
+    const history = getLocalStorage("History", []);
+
+    if (nextPuzzles.length > 0) {
+      const nextPuzzle = nextPuzzles.shift();
+      setCurrentPuzzle(nextPuzzle);
+      setLocalStorage("currentPuzzle", nextPuzzle);
+      setLocalStorage("NextPuzzles", nextPuzzles);
+      setLocalStorage("History", [nextPuzzle, ...history]);
+
+      if (nextPuzzles.length < 10 && !isFetching) {
+        setIsFetching(true);
+        fetchNewPuzzles(false);
+      }
+    } else {
+      setIsFetching(true);
+      fetchNewPuzzles(true).then(() => getNextPuzzle());
+    }
+  };
+
+  // Initial Load
+  useEffect(() => {
+    const nextPuzzles = getLocalStorage("NextPuzzles", []);
+    const storedCurrentPuzzle = getLocalStorage("currentPuzzle", null);
+
+    if (!storedCurrentPuzzle) {
+      // Initial load, no current puzzle stored
+      if (nextPuzzles.length === 0) {
+        fetchNewPuzzles(true).then(() => getNextPuzzle());
+      } else {
+        getNextPuzzle();
+      }
+    } else {
+      // Use the stored current puzzle
+      setCurrentPuzzle(storedCurrentPuzzle);
+    }
+  }, []);
+
+  const nextPuzzles = getLocalStorage("NextPuzzles", []);
+
+  // Media
   const isDesktop = useMediaQuery("(min-width: 800px)");
 
   // Reveal Info / Solution
-
   const solutionRef = useRef();
   const infoRef = useRef();
 
@@ -51,12 +121,18 @@ const Home = ({
             onMouseLeave={() => fadeOutInfo()}
           >
             <div ref={infoRef} className="info-data">
-              <p className="author">
-                <span>Author: </span> {puzzleAuthor.map((author) => author)}
-              </p>
-              <div className="puzzle-source">
-                <span>Source:</span> {puzzleSource}, {puzzleYear}
-              </div>
+              {currentPuzzle && (
+                <>
+                  <p className="author">
+                    <span>Author: </span>{" "}
+                    {currentPuzzle.puzzleAuthor?.join(", ")}
+                  </p>
+                  <div className="puzzle-source">
+                    <span>Source:</span> {currentPuzzle?.puzzleSource?.name},{" "}
+                    {currentPuzzle?.puzzleSource?.date?.year}
+                  </div>
+                </>
+              )}
             </div>
             <span className="info-text">Info</span>
             <span className="circle">
@@ -66,12 +142,15 @@ const Home = ({
         </div>
         <div className="board-component">
           {isLoading ? (
-            <Loading></Loading>
+            <Loading />
           ) : (
             <ChessBoard
-              position={fen}
+              position={
+                currentPuzzle.fen ||
+                "2R5/4bppk/1p1p3Q/5R1P/4P3/5P2/r4q1P/7K b - - 6 50"
+              }
               width={isDesktop ? 400 : 300}
-            ></ChessBoard>
+            />
           )}
         </div>
         <div className="solution-component">
@@ -82,13 +161,16 @@ const Home = ({
           >
             <div className="solution-data">
               <p ref={solutionRef} className="solution-data-text">
-                <a
-                  className="puzzle-solution-link"
-                  href={`https://yacpdb.org/#${puzzleId}`}
-                  target="_blank"
-                >
-                  https://yacpdb.org/#{puzzleId}
-                </a>
+                {currentPuzzle && (
+                  <a
+                    className="puzzle-solution-link"
+                    href={`https://yacpdb.org/#${currentPuzzle?.puzzleId}`}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    https://yacpdb.org/#{currentPuzzle?.puzzleId}
+                  </a>
+                )}
               </p>
             </div>
             <span className="border">
@@ -99,13 +181,16 @@ const Home = ({
         </div>
       </div>
 
-      <div class="centerBox">
+      <div className="centerBox">
         <div className="categoryWrapper">
-          <h1>
-            <AiOutlinePlus></AiOutlinePlus>
-          </h1>
-          <button>
-            <span onClick={() => getPuzzle()}>
+          <button
+            onClick={getNextPuzzle}
+            disabled={isLoading || nextPuzzles.length === 0}
+          >
+            <h1>
+              <AiOutlinePlus />
+            </h1>
+            <span>
               <span>
                 <span>Want more?</span>
               </span>
