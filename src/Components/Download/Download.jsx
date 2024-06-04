@@ -1,5 +1,9 @@
 import React from "react";
 import { HiDownload } from "react-icons/hi";
+import { toast } from "sonner";
+
+// const url = "https://api-mate-in-two.onrender.com/fen";
+// const url = "http://localhost:5000/fen";
 
 const Download = ({ fen, id }) => {
   const downloadFen = async () => {
@@ -28,6 +32,7 @@ const Download = ({ fen, id }) => {
       window.URL.revokeObjectURL(url); // Clean up the URL.createObjectURL
     } catch (error) {
       console.error("Failed to download the FEN image:", error);
+      toast.error("Failed to download the FEN image.");
     }
   };
 
