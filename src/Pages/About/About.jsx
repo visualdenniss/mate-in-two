@@ -12,7 +12,7 @@ const About = ({ darkMode }) => {
         </p>
         <p>
           But i did, so i've built this mini puzzle app currently containing
-          over 10.000 puzzles in its database. All puzzles are from
+          over 15.000 puzzles in its database. All puzzles are from
           <a href="https://yacpdb.org/#static/home" target="_blank">
             YACPDB.
           </a>
