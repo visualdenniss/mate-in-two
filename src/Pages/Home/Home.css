@@ -552,8 +552,17 @@
 }
 
 @media screen and (max-width: 400px) {
+  .categoryWrapper {
+    transform: translateY(-60px);
+  }
+  .info-component {
+    transform: translateY(-80px);
+  }
+  .solution-component {
+    transform: translateY(-120px);
+  }
   .info-data-active {
-    transform: translateX(-65%);
+    transform: translateX(-55%);
     font-size: 13px;
   }
 

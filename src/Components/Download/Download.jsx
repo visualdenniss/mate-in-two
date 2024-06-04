@@ -4,7 +4,7 @@ import { HiDownload } from "react-icons/hi";
 const Download = ({ fen, id }) => {
   const downloadFen = async () => {
     try {
-      const response = await fetch("http://localhost:5000/fen", {
+      const response = await fetch("https://api-mate-in-two.onrender.com/fen", {
         method: "POST", // Use POST method for sending data
         headers: {
           "Content-Type": "application/json", // Specify JSON content type

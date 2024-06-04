@@ -9,7 +9,9 @@ import Masonry, { ResponsiveMasonry } from "react-responsive-masonry";
 const Composers = () => {
   return (
     <div className="composers">
-      <ResponsiveMasonry columnsCountBreakPoints={{ 350: 2, 750: 4, 1800: 6 }}>
+      <ResponsiveMasonry
+        columnsCountBreakPoints={{ 100: 1, 400: 2, 750: 4, 1800: 6 }}
+      >
         <Masonry gutter="20px">
           {composers.map((composer) => (
             <Link to={`/composers/${composer.composerId}`}>

@@ -26,7 +26,7 @@ const Composer = () => {
         <div className="composer-info">
           <h1>{composer?.composerName}</h1>
           <p>{composer?.composerInfo && composer.composerInfo}</p>
-          <p>Source: Wiki</p>
+          {/* <p>Source: Wiki</p> */}
         </div>
       </div>
     </div>

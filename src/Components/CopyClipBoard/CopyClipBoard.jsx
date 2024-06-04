@@ -4,7 +4,7 @@ import { toast } from "sonner";
 
 const CopyClipBoard = ({ id }) => {
   const copyToClipBoard = () => {
-    const url = `http://localhost:3000/${id}`;
+    const url = `https://api-mate-in-two.onrender.com/${id}`;
     navigator.clipboard
       .writeText(url)
       .then(() => {
