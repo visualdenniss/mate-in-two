@@ -18,7 +18,7 @@ const Download = ({ fen, id }) => {
       a.href = objectUrl;
       a.download = `${id}.gif`;
       a.click();
-
+      toast.success('Image downloaded successfully!');
       window.URL.revokeObjectURL(objectUrl);
     } catch (error) {
       console.error('Download error:', error);
