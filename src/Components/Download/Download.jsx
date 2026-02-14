@@ -1,38 +1,33 @@
-import React from "react";
-import { HiDownload } from "react-icons/hi";
-import { toast } from "sonner";
-
-// const url = "https://api-mate-in-two.onrender.com/fen";
-// const url = "http://localhost:5000/fen";
+import React from 'react';
+import { HiDownload } from 'react-icons/hi';
+import { toast } from 'sonner';
 
 const Download = ({ fen, id }) => {
   const downloadFen = async () => {
     try {
-      const response = await fetch("https://api-mate-in-two.onrender.com/fen", {
-        method: "POST", // Use POST method for sending data
-        headers: {
-          "Content-Type": "application/json", // Specify JSON content type
-        },
-        body: JSON.stringify({ fen }), // Send the FEN string in the request body
-      });
+      const encodedFen = encodeURIComponent(fen);
 
-      if (!response.ok) {
-        throw new Error("Network response was not ok");
-      }
+      const lichessUrl = `https://lichess1.org/export/fen.gif?fen=${encodedFen}_-_0_1&color=white`;
+
+      // Fetch image first
+      const response = await fetch(lichessUrl);
+      if (!response.ok) throw new Error('Failed to fetch image');
 
       const blob = await response.blob();
-      const url = window.URL.createObjectURL(blob);
+      const objectUrl = window.URL.createObjectURL(blob);
 
-      const a = document.createElement("a");
-      a.href = url;
-      a.download = `${id}.png`; // Set the desired file name
+      // Trigger download
+      const a = document.createElement('a');
+      a.href = objectUrl;
+      a.download = `${id}.gif`;
       document.body.appendChild(a);
       a.click();
+
       document.body.removeChild(a);
-      window.URL.revokeObjectURL(url); // Clean up the URL.createObjectURL
+      window.URL.revokeObjectURL(objectUrl);
     } catch (error) {
-      console.error("Failed to download the FEN image:", error);
-      toast.error("Failed to download the FEN image.");
+      console.error('Failed to download FEN image:', error);
+      toast.error('Failed to download the FEN image.');
     }
   };
 
