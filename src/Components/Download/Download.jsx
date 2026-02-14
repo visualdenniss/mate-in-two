@@ -5,34 +5,29 @@ import { toast } from 'sonner';
 const Download = ({ fen, id }) => {
   const downloadFen = async () => {
     try {
-      const encodedFen = encodeURIComponent(fen);
+      // Call your Netlify function instead of Lichess directly
+      const proxyUrl = `/.netlify/functions/download-fen?fen=${encodeURIComponent(fen)}&id=${id}`;
 
-      const lichessUrl = `https://lichess1.org/export/fen.gif?fen=${encodedFen}_-_0_1&color=white`;
-
-      // Fetch image first
-      const response = await fetch(lichessUrl);
-      if (!response.ok) throw new Error('Failed to fetch image');
+      const response = await fetch(proxyUrl);
+      if (!response.ok) throw new Error('Failed to fetch image via proxy');
 
       const blob = await response.blob();
       const objectUrl = window.URL.createObjectURL(blob);
 
-      // Trigger download
       const a = document.createElement('a');
       a.href = objectUrl;
       a.download = `${id}.gif`;
-      document.body.appendChild(a);
       a.click();
 
-      document.body.removeChild(a);
       window.URL.revokeObjectURL(objectUrl);
     } catch (error) {
-      console.error('Failed to download FEN image:', error);
-      toast.error('Failed to download the FEN image.');
+      console.error('Download error:', error);
+      toast.error('Failed to download the image.');
     }
   };
 
   return (
-    <button onClick={downloadFen}>
+    <button onClick={downloadFen} title="Download puzzle image">
       <HiDownload />
     </button>
   );
