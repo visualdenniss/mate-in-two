@@ -1,9 +1,9 @@
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import { getLocalStorage } from '../../lib/localStorage';
 import Loading from '../../Components/Loading/Loading';
+import ChessgroundBoard from '../../Components/Chessboard/ChessgroundBoard';
 import axios from 'axios';
-import Chessboard from 'chessboardjsx';
 import useMediaQuery from '../../Hooks/useMediaQuery';
 import './Puzzle.css';
 
@@ -89,12 +89,7 @@ const Puzzle = () => {
     <div className="page">
       {puzzle.fen && (
         <div className="puzzle-container">
-          <Chessboard
-            position={
-              puzzle.fen || '2R5/4bppk/1p1p3Q/5R1P/4P3/5P2/r4q1P/7K b - - 6 50'
-            }
-            width={isDesktop ? 400 : 300}
-          />
+          <ChessgroundBoard fen={puzzle?.fen} width={isDesktop ? 400 : 300} />
           <div className="puzzle-details">
             <p>{puzzle?.puzzleAuthor?.join(', ')} </p>
             <p>{puzzle?.puzzleSource?.date?.year} </p>

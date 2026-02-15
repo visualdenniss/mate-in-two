@@ -1,20 +1,21 @@
-import React, { useState, useRef, useEffect } from "react";
-import ChessBoard from "chessboardjsx";
-import useMediaQuery from "../../Hooks/useMediaQuery";
-import axios from "axios";
-import "./Home.css";
-import { AiOutlinePlus } from "react-icons/ai";
-import Loading from "../../Components/Loading/Loading";
-import { getLocalStorage, setLocalStorage } from "../../lib/localStorage";
+import { useState, useRef, useEffect } from 'react';
+import ChessgroundBoard from '../../Components/Chessboard/ChessgroundBoard';
+
+import useMediaQuery from '../../Hooks/useMediaQuery';
+import axios from 'axios';
+import './Home.css';
+import { AiOutlinePlus } from 'react-icons/ai';
+import Loading from '../../Components/Loading/Loading';
+import { getLocalStorage, setLocalStorage } from '../../lib/localStorage';
 
 const Home = () => {
   const [currentPuzzle, setCurrentPuzzle] = useState(() =>
-    getLocalStorage("currentPuzzle", {}),
+    getLocalStorage('currentPuzzle', {}),
   );
   const [isLoading, setIsLoading] = useState(false);
   const [isFetching, setIsFetching] = useState(false);
 
-  const url = "https://api-mate-in-two.onrender.com/";
+  const url = 'https://api-mate-in-two.onrender.com/';
   // const url = "http://localhost:5000/";
 
   // Fetch New Puzzles
@@ -23,18 +24,18 @@ const Home = () => {
       if (showLoading) {
         setIsLoading(true);
       }
-      const historyIdList = getLocalStorage("History", []).map(
+      const historyIdList = getLocalStorage('History', []).map(
         (history) => history.puzzleId,
       );
       const res = await axios.get(url, {
         params: {
           exclude:
-            historyIdList.length > 0 ? historyIdList.join(",") : undefined,
+            historyIdList.length > 0 ? historyIdList.join(',') : undefined,
         },
       });
       const newPuzzles = res.data;
-      const nextPuzzles = getLocalStorage("NextPuzzles", []);
-      setLocalStorage("NextPuzzles", [...nextPuzzles, ...newPuzzles]);
+      const nextPuzzles = getLocalStorage('NextPuzzles', []);
+      setLocalStorage('NextPuzzles', [...nextPuzzles, ...newPuzzles]);
     } catch (err) {
       console.error(err);
     } finally {
@@ -47,15 +48,15 @@ const Home = () => {
 
   // Get Next Puzzle
   const getNextPuzzle = () => {
-    const nextPuzzles = getLocalStorage("NextPuzzles", []);
-    const history = getLocalStorage("History", []);
+    const nextPuzzles = getLocalStorage('NextPuzzles', []);
+    const history = getLocalStorage('History', []);
 
     if (nextPuzzles.length > 0) {
       const nextPuzzle = nextPuzzles.shift();
       setCurrentPuzzle(nextPuzzle);
-      setLocalStorage("currentPuzzle", nextPuzzle);
-      setLocalStorage("NextPuzzles", nextPuzzles);
-      setLocalStorage("History", [nextPuzzle, ...history]);
+      setLocalStorage('currentPuzzle', nextPuzzle);
+      setLocalStorage('NextPuzzles', nextPuzzles);
+      setLocalStorage('History', [nextPuzzle, ...history]);
 
       if (nextPuzzles.length < 10 && !isFetching) {
         setIsFetching(true);
@@ -69,8 +70,8 @@ const Home = () => {
 
   // Initial Load
   useEffect(() => {
-    const nextPuzzles = getLocalStorage("NextPuzzles", []);
-    const storedCurrentPuzzle = getLocalStorage("currentPuzzle", null);
+    const nextPuzzles = getLocalStorage('NextPuzzles', []);
+    const storedCurrentPuzzle = getLocalStorage('currentPuzzle', null);
 
     if (!storedCurrentPuzzle) {
       // Initial load, no current puzzle stored
@@ -85,29 +86,29 @@ const Home = () => {
     }
   }, []);
 
-  const nextPuzzles = getLocalStorage("NextPuzzles", []);
+  const nextPuzzles = getLocalStorage('NextPuzzles', []);
 
   // Media
-  const isDesktop = useMediaQuery("(min-width: 800px)");
+  const isDesktop = useMediaQuery('(min-width: 800px)');
 
   // Reveal Info / Solution
   const solutionRef = useRef();
   const infoRef = useRef();
 
   const displaySolution = () => {
-    solutionRef.current.classList.toggle("solution-active");
+    solutionRef.current.classList.toggle('solution-active');
   };
 
   const displayInfo = () => {
-    infoRef.current.classList.toggle("info-data-active");
+    infoRef.current.classList.toggle('info-data-active');
   };
 
   const fadeOut = () => {
-    solutionRef.current.classList.remove("solution-active");
+    solutionRef.current.classList.remove('solution-active');
   };
 
   const fadeOutInfo = () => {
-    infoRef.current.classList.remove("info-data-active");
+    infoRef.current.classList.remove('info-data-active');
   };
 
   return (
@@ -124,11 +125,11 @@ const Home = () => {
               {currentPuzzle && (
                 <>
                   <p className="author">
-                    <span>Author: </span>{" "}
-                    {currentPuzzle.puzzleAuthor?.join(", ")}
+                    <span>Author: </span>{' '}
+                    {currentPuzzle.puzzleAuthor?.join(', ')}
                   </p>
                   <div className="puzzle-source">
-                    <span>Source:</span> {currentPuzzle?.puzzleSource?.name},{" "}
+                    <span>Source:</span> {currentPuzzle?.puzzleSource?.name},{' '}
                     {currentPuzzle?.puzzleSource?.date?.year}
                   </div>
                 </>
@@ -144,11 +145,15 @@ const Home = () => {
           {isLoading ? (
             <Loading />
           ) : (
-            <ChessBoard
-              position={
-                currentPuzzle.fen ||
-                "2R5/4bppk/1p1p3Q/5R1P/4P3/5P2/r4q1P/7K b - - 6 50"
-              }
+            // <ChessBoard
+            //   position={
+            //     currentPuzzle.fen ||
+            //     '2R5/4bppk/1p1p3Q/5R1P/4P3/5P2/r4q1P/7K b - - 6 50'
+            //   }
+            //   width={isDesktop ? 400 : 300}
+            // />
+            <ChessgroundBoard
+              fen={currentPuzzle?.fen}
               width={isDesktop ? 400 : 300}
             />
           )}
