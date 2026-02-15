@@ -77,7 +77,7 @@ const ChessgroundBoard = ({ fen, width }) => {
     // Ask SF: "What was the best move in the position I just moved from?"
     engineRef.current.postMessage('ucinewgame');
     engineRef.current.postMessage(`position fen ${positionBeforeMove}`);
-    engineRef.current.postMessage('go depth 20');
+    engineRef.current.postMessage('go depth 27');
   }
 
   // 2. SF replies with the best move for that position
@@ -108,7 +108,7 @@ const ChessgroundBoard = ({ fen, width }) => {
           setTimeout(() => {
             setStatus('Engine is thinking...');
             engineRef.current.postMessage(`position fen ${chess.fen()}`);
-            engineRef.current.postMessage('go depth 20');
+            engineRef.current.postMessage('go depth 27');
           }, 500);
         }
       } else {

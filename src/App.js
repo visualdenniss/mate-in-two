@@ -1,30 +1,30 @@
-import React, { useState } from "react";
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import Sidebar from "./Components/Sidebar/Sidebar";
-import Home from "./Pages/Home/Home";
-import Cats from "./Pages/Cats/Cats";
-import About from "./Pages/About/About";
-import History from "./Pages/History/History";
-import Composers from "./Pages/Composers/Composers";
-import Theme from "./Components/Theme/Theme";
+import { useState } from 'react';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import Sidebar from './Components/Sidebar/Sidebar';
+import Home from './Pages/Home/Home';
+import Cats from './Pages/Cats/Cats';
+import About from './Pages/About/About';
+import History from './Pages/History/History';
+import Composers from './Pages/Composers/Composers';
+import Theme from './Components/Theme/Theme';
 
-import "./App.css";
-import Bookmarks from "./Pages/Bookmarks/Bookmarks";
-import Puzzle from "./Pages/Puzzle/Puzzle";
-import Composer from "./Pages/Composer/Composer";
+import './App.css';
+import Bookmarks from './Pages/Bookmarks/Bookmarks';
+import Puzzle from './Pages/Puzzle/Puzzle';
+import Composer from './Pages/Composer/Composer';
 const App = () => {
   const [darkMode, setDarkMode] = useState(true);
   const body = document.body;
 
   const darkTheme = () => {
-    body.classList.remove("light");
-    body.classList.add("dark");
+    body.classList.remove('light');
+    body.classList.add('dark');
     setDarkMode(true);
   };
 
   const lightTheme = () => {
-    body.classList.remove("dark");
-    body.classList.add("light");
+    body.classList.remove('dark');
+    body.classList.add('light');
     setDarkMode(false);
   };
 
