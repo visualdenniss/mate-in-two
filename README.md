@@ -16,8 +16,5 @@ But I did, so I've built this mini puzzle app currently containing over 15,000 p
   <li><b>Share Puzzles:</b> Create shareable links to puzzles for easy sharing.</li>
   <li><b>Puzzle History:</b> Track and review your puzzle-solving history.</li>
   <li><b>Composer Pages:</b> Dedicated pages for prominent composers with detailed information.</li>
-
-Future Features:
-
   <li><b>Interactive Puzzles</b> Play out the position and get a feedback about if your move is correct</li>
 </ul>
