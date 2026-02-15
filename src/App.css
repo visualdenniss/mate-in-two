@@ -36,6 +36,11 @@
   grid-template-columns: repeat(3, 1fr);
 }
 
+cg-board {
+  background-color: #f0dab4 !important;
+  background-image: url('https://lichess1.org/assets/hashed/brown.d4a5fe34.png') !important;
+}
+
 @media screen and (max-width: 800px) {
   .app {
     height: 100%;

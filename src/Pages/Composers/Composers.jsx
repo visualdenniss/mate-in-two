@@ -1,10 +1,8 @@
-import React from "react";
-import { Link } from "react-router-dom";
+import { Link } from 'react-router-dom';
+import { composers } from '../../data';
+import './Composers.css';
 
-import { composers } from "../../data";
-import "./Composers.css";
-
-import Masonry, { ResponsiveMasonry } from "react-responsive-masonry";
+import Masonry, { ResponsiveMasonry } from 'react-responsive-masonry';
 
 const Composers = () => {
   return (

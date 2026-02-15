@@ -1,13 +1,13 @@
-import React, { useState } from "react";
-import Board from "../../Components/Board/Board";
-import { getColumnClass } from "../../lib/getColumnClass";
-import { getLocalStorage } from "../../lib/localStorage";
-import { Toaster } from "sonner";
-import Pagination from "../../Components/Pagination/Pagination";
+import { useState } from 'react';
+import Board from '../../Components/Board/Board';
+import { getColumnClass } from '../../lib/getColumnClass';
+import { getLocalStorage } from '../../lib/localStorage';
+import { Toaster } from 'sonner';
+import Pagination from '../../Components/Pagination/Pagination';
 
 const Bookmarks = () => {
-  const bookmarkedIds = getLocalStorage("Bookmarks", []);
-  const history = getLocalStorage("History", []);
+  const bookmarkedIds = getLocalStorage('Bookmarks', []);
+  const history = getLocalStorage('History', []);
 
   const bookmarkedPuzzles = history.filter((puzzle) =>
     bookmarkedIds.includes(puzzle.puzzleId),
@@ -55,7 +55,7 @@ const Bookmarks = () => {
       </ul>
       {bookmarkedPuzzles.length === 0 && <div>No Bookmarks Found</div>}
       {bookmarkedPuzzles.length > 0 && (
-        <p style={{ fontSize: "18px", marginTop: "20px" }}>{`${
+        <p style={{ fontSize: '18px', marginTop: '20px' }}>{`${
           indexOfFirstItem + 1
         } -  ${indexOfLastItem} of ${bookmarkedPuzzles.length}`}</p>
       )}

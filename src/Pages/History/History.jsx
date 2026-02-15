@@ -1,12 +1,12 @@
-import React, { useState } from "react";
-import Board from "../../Components/Board/Board";
-import { getColumnClass } from "../../lib/getColumnClass";
-import { getLocalStorage } from "../../lib/localStorage";
-import { Toaster } from "sonner";
-import Pagination from "../../Components/Pagination/Pagination";
+import { useState } from 'react';
+import Board from '../../Components/Board/Board';
+import { getColumnClass } from '../../lib/getColumnClass';
+import { getLocalStorage } from '../../lib/localStorage';
+import { Toaster } from 'sonner';
+import Pagination from '../../Components/Pagination/Pagination';
 
 const History = () => {
-  const historyPuzzles = getLocalStorage("History", []);
+  const historyPuzzles = getLocalStorage('History', []);
   const [currentPage, setCurrentPage] = useState(1);
   const [itemsPerPage] = useState(6);
 
@@ -48,7 +48,7 @@ const History = () => {
       </ul>
       {historyPuzzles.length === 0 && <div>Your Puzzle History is empty.</div>}
       {historyPuzzles.length > 0 && (
-        <p style={{ fontSize: "18px", marginTop: "20px" }}>{`${
+        <p style={{ fontSize: '18px', marginTop: '20px' }}>{`${
           indexOfFirstItem + 1
         } -  ${indexOfLastItem} of ${historyPuzzles.length}`}</p>
       )}
