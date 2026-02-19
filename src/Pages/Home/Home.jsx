@@ -16,7 +16,7 @@ const Home = () => {
   const [isFetching, setIsFetching] = useState(false);
   // isMate ? then show Retry btn, but for each puzzle, it should be set to false at the start.
   const [resetKey, setResetKey] = useState(0);
-  const [isMate, setIsMate] = useState(true);
+  const [isMate, setIsMate] = useState(false);
 
   const url = 'https://api-mate-in-two.onrender.com/';
   // const url = "http://localhost:5000/";
