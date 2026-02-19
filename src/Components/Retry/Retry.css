@@ -1,0 +1,55 @@
+/* The diff between .board-component retry btn and puzzle-action-icons is that board component styles for the home page board while history / bookmark have diff layout using Board component, thus need diff styling */
+
+.board-component .retry-component {
+  position: absolute;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  top: -24px;
+  left: 0;
+}
+
+.board-component .retry-btn {
+  border: 2px solid var(--font-primary);
+  background-color: transparent;
+  padding: 4px 4px 0px 4px;
+  color: var(--font-primary);
+  cursor: pointer;
+  transition: all 200ms ease-out;
+  font-size: 18px;
+}
+
+.board-component .retry-btn:hover {
+  color: var(--bg-primary);
+  background-color: var(--font-primary);
+}
+
+.puzzle-actions-icons .retry-btn {
+  cursor: pointer;
+  font-size: 24px;
+  display: grid;
+  place-items: center;
+  color: var(--font-primary);
+  background: transparent;
+  border: none;
+  filter: grayscale(100%) opacity(0.7);
+  filter: opacity(0.5);
+  transition: all 0.45s cubic-bezier(0.65, 0, 0.076, 1);
+}
+
+.puzzle-actions-icons .retry-btn:hover {
+  color: var(--font-primary);
+  filter: grayscale(0%) opacity(1);
+  filter: opacity(1);
+}
+
+@media screen and (max-width: 880px) {
+  .board-component .retry-component {
+    top: 28px;
+    left: 50px;
+  }
+
+  .board-component .retry-btn {
+    font-size: 14px;
+  }
+}

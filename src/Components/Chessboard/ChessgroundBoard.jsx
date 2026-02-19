@@ -2,6 +2,8 @@ import { useEffect, useRef, useState } from 'react';
 import { Chessground } from 'chessground';
 import { Chess } from 'chess.js';
 
+import './ChessgroundBoard.css';
+
 const getLegalMoves = (chess) => {
   const dests = new Map();
   chess.moves({ verbose: true }).forEach((m) => {
@@ -12,7 +14,7 @@ const getLegalMoves = (chess) => {
   return dests;
 };
 
-const ChessgroundBoard = ({ fen, width }) => {
+const ChessgroundBoard = ({ fen, width, resetKey, setIsMate }) => {
   const boardRef = useRef(null);
   const cgRef = useRef(null);
   const chessRef = useRef(new Chess());
@@ -64,7 +66,7 @@ const ChessgroundBoard = ({ fen, width }) => {
     } else {
       cgRef.current.set(config);
     }
-  }, [fen]);
+  }, [fen, resetKey]);
 
   // 1. User drops a piece
   function handleUserMove(orig, dest) {
@@ -103,6 +105,7 @@ const ChessgroundBoard = ({ fen, width }) => {
 
         if (chess.isCheckmate()) {
           setStatus('🎉 Checkmate! You solved it!');
+          setIsMate?.(true);
         } else {
           // Now ask engine to move for Black
           setTimeout(() => {
@@ -153,18 +156,7 @@ const ChessgroundBoard = ({ fen, width }) => {
 
   return (
     <div className="board-wrapper">
-      <div
-        className="status-text"
-        style={{
-          height: '30px',
-          textAlign: 'center',
-          fontWeight: 'bold',
-          marginBottom: '10px',
-          color: 'white',
-        }}
-      >
-        {status}
-      </div>
+      <div className="status-text">{status}</div>
       <div
         ref={boardRef}
         style={{ width: width || 400, height: width || 400 }}

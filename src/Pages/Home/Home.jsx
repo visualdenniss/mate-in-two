@@ -1,6 +1,6 @@
 import { useState, useRef, useEffect } from 'react';
 import ChessgroundBoard from '../../Components/Chessboard/ChessgroundBoard';
-
+import { Retry } from '../../Components/Retry/Retry';
 import useMediaQuery from '../../Hooks/useMediaQuery';
 import axios from 'axios';
 import './Home.css';
@@ -14,6 +14,9 @@ const Home = () => {
   );
   const [isLoading, setIsLoading] = useState(false);
   const [isFetching, setIsFetching] = useState(false);
+  // isMate ? then show Retry btn, but for each puzzle, it should be set to false at the start.
+  const [resetKey, setResetKey] = useState(0);
+  const [isMate, setIsMate] = useState(true);
 
   const url = 'https://api-mate-in-two.onrender.com/';
   // const url = "http://localhost:5000/";
@@ -111,6 +114,8 @@ const Home = () => {
     infoRef.current.classList.remove('info-data-active');
   };
 
+  console.log(currentPuzzle?.fen);
+
   return (
     <div className="home">
       <div className="title">#02</div>
@@ -152,10 +157,23 @@ const Home = () => {
             //   }
             //   width={isDesktop ? 400 : 300}
             // />
-            <ChessgroundBoard
-              fen={currentPuzzle?.fen}
-              width={isDesktop ? 400 : 300}
-            />
+
+            <>
+              <ChessgroundBoard
+                fen={currentPuzzle?.fen}
+                width={isDesktop ? 400 : 300}
+                resetKey={resetKey}
+                setIsMate={setIsMate}
+              />
+              {isMate && (
+                <Retry
+                  onRetry={() => {
+                    setResetKey((k) => k + 1);
+                    setIsMate(false);
+                  }}
+                />
+              )}
+            </>
           )}
         </div>
         <div className="solution-component">

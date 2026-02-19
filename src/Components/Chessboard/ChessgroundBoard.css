@@ -1,0 +1,6 @@
+.status-text {
+  height: 30px;
+  text-align: center;
+  margin-bottom: 10px;
+  color: var(--font-primary);
+}
