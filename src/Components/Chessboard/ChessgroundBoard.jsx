@@ -79,7 +79,7 @@ const ChessgroundBoard = ({ fen, width, resetKey, setIsMate }) => {
     // Ask SF: "What was the best move in the position I just moved from?"
     engineRef.current.postMessage('ucinewgame');
     engineRef.current.postMessage(`position fen ${positionBeforeMove}`);
-    engineRef.current.postMessage('go depth 27');
+    engineRef.current.postMessage('go mate 2');
   }
 
   // 2. SF replies with the best move for that position
