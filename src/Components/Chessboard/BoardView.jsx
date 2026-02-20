@@ -27,10 +27,6 @@ export default function BoardView({
         check: true,
         lastMove: true,
       },
-      animation: {
-        enabled: true,
-        duration: 500,
-      },
     };
 
     if (!cgRef.current) {
