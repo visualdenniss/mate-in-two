@@ -14,6 +14,7 @@ const ChessgroundBoard = ({ fen, width, resetKey, setIsMate }) => {
     checkColor,
     loadPosition,
     userMove,
+    isPromotionMove,
   } = usePuzzleEngine(setIsMate);
 
   const [promotionMove, setPromotionMove] = useState(null);
@@ -30,14 +31,9 @@ const ChessgroundBoard = ({ fen, width, resetKey, setIsMate }) => {
   }, [fen, resetKey]);
 
   const handleMove = (orig, dest) => {
-    const rank = dest[1];
-
     setLastMove([orig, dest]); // highlight attempt
 
-    const isPromotion =
-      (turn === 'white' && rank === '8') || (turn === 'black' && rank === '1');
-
-    if (isPromotion) {
+    if (isPromotionMove(orig, dest)) {
       setPromotionMove({ orig, dest });
       return;
     }

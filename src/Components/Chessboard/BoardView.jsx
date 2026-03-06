@@ -26,10 +26,6 @@ export default function BoardView({
         dests,
         showDests: true,
         events: { after: onMove },
-
-        promotion: {
-          enabled: true,
-        },
       },
 
       highlight: {
