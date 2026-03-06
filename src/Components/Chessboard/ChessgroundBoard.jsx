@@ -1,5 +1,6 @@
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import BoardView from './BoardView';
+import PromotionPicker from './PromotionPicker';
 import { usePuzzleEngine } from './usePuzzleEngine';
 
 import './ChessgroundBoard.css';
@@ -15,13 +16,39 @@ const ChessgroundBoard = ({ fen, width, resetKey, setIsMate }) => {
     userMove,
   } = usePuzzleEngine(setIsMate);
 
+  const [promotionMove, setPromotionMove] = useState(null);
+  const [lastMove, setLastMove] = useState(null);
+
+  const cancelPromotion = () => {
+    setPromotionMove(null);
+    setLastMove(null); // remove highlight
+  };
+
   useEffect(() => {
     if (!fen) return;
     loadPosition(fen);
   }, [fen, resetKey]);
 
   const handleMove = (orig, dest) => {
+    const rank = dest[1];
+
+    setLastMove([orig, dest]); // highlight attempt
+
+    const isPromotion =
+      (turn === 'white' && rank === '8') || (turn === 'black' && rank === '1');
+
+    if (isPromotion) {
+      setPromotionMove({ orig, dest });
+      return;
+    }
+
     userMove(orig + dest);
+  };
+
+  const handlePromotionSelect = (piece) => {
+    const { orig, dest } = promotionMove;
+    userMove(orig + dest + piece);
+    setPromotionMove(null);
   };
 
   return (
@@ -34,6 +61,13 @@ const ChessgroundBoard = ({ fen, width, resetKey, setIsMate }) => {
         onMove={handleMove}
         turn={turn}
         checkColor={checkColor}
+        lastMove={lastMove}
+      />
+      <PromotionPicker
+        color={turn}
+        square={promotionMove?.dest}
+        onSelect={handlePromotionSelect}
+        onCancel={cancelPromotion}
       />
     </div>
   );

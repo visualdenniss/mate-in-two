@@ -5,7 +5,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  top: -24px;
+  top: -36px;
   left: 0;
 }
 
@@ -45,7 +45,7 @@
 
 @media screen and (max-width: 880px) {
   .board-component .retry-component {
-    top: 28px;
+    top: 20px;
     left: 50px;
   }
 
