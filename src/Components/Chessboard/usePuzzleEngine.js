@@ -12,6 +12,14 @@ export const getLegalMoves = (chess) => {
   return dests;
 };
 
+export const isPromotionMoveForChess = (chess, orig, dest) =>
+  chess
+    .moves({ verbose: true })
+    .some(
+      (move) =>
+        move.from === orig && move.to === dest && Boolean(move.promotion),
+    );
+
 export function usePuzzleEngine(setIsMate) {
   const chessRef = useRef(new Chess());
   const pendingMoveRef = useRef(null);
@@ -70,6 +78,10 @@ export function usePuzzleEngine(setIsMate) {
 
     setStatus('Analyzing move...');
     analyzePosition(positionBeforeMove);
+  }
+
+  function isPromotionMove(orig, dest) {
+    return isPromotionMoveForChess(chessRef.current, orig, dest);
   }
 
   function handleEngineMove(sfMove) {
@@ -145,5 +157,6 @@ export function usePuzzleEngine(setIsMate) {
     checkColor,
     loadPosition,
     userMove,
+    isPromotionMove,
   };
 }

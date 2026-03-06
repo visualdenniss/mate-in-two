@@ -1,6 +1,6 @@
 // Mock useStockfish to avoid Worker creation
 import { Chess } from 'chess.js';
-import { getLegalMoves } from './usePuzzleEngine';
+import { getLegalMoves, isPromotionMoveForChess } from './usePuzzleEngine';
 
 describe('usePuzzleEngine helpers', () => {
   describe('getLegalMoves', () => {
@@ -63,6 +63,20 @@ describe('promotion', () => {
 
     expect(dests.get('a7')).toContain('a8');
   });
+  test('promotion detection returns true for a pawn move to the last rank', () => {
+    const fen = '8/P7/8/8/8/8/8/k6K w - - 0 1';
+    const chess = new Chess(fen);
+
+    expect(isPromotionMoveForChess(chess, 'a7', 'a8')).toBe(true);
+  });
+
+  test('promotion detection returns false for a non-pawn move to the back rank', () => {
+    const fen = '7k/R7/8/8/8/8/8/7K w - - 0 1';
+    const chess = new Chess(fen);
+
+    expect(isPromotionMoveForChess(chess, 'a7', 'a8')).toBe(false);
+  });
+
   test('to knight works', () => {
     const fen = '8/P7/8/8/8/8/8/k6K w - - 0 1';
     const chess = new Chess(fen);
@@ -101,16 +115,5 @@ describe('promotion', () => {
     });
 
     expect(move.promotion).toBe('n');
-  });
-
-  test('inspect promotion move object', () => {
-    const fen = '8/P7/8/8/8/8/8/k6K w - - 0 1';
-    const chess = new Chess(fen);
-
-    const moves = chess.moves({ verbose: true });
-
-    const promotionMoves = moves.filter((m) => m.from === 'a7');
-
-    console.log(promotionMoves);
   });
 });
