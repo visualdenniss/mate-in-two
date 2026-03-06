@@ -2,7 +2,7 @@ import { useRef, useState } from 'react';
 import { Chess } from 'chess.js';
 import { useStockfish } from './useStockfish';
 
-const getLegalMoves = (chess) => {
+export const getLegalMoves = (chess) => {
   const dests = new Map();
   chess.moves({ verbose: true }).forEach((m) => {
     const ms = dests.get(m.from) || [];
@@ -42,22 +42,51 @@ export function usePuzzleEngine(setIsMate) {
   }
 
   function userMove(moveUCI) {
-    const positionBeforeMove = chessRef.current.fen();
+    const chess = chessRef.current;
+    const positionBeforeMove = chess.fen();
+
+    let move;
+    try {
+      move = chess.move({
+        from: moveUCI.slice(0, 2),
+        to: moveUCI.slice(2, 4),
+        promotion: moveUCI[4],
+      });
+    } catch {
+      return;
+    }
+
+    if (!move) return;
+
+    // update board immediately
+    setCurrentFen(chess.fen());
+    setDests(getLegalMoves(chess));
+    setTurn(chess.turn() === 'w' ? 'white' : 'black');
+    setCheckColor(
+      chess.isCheck() ? (chess.turn() === 'w' ? 'white' : 'black') : false,
+    );
 
     pendingMoveRef.current = { moveUCI, positionBeforeMove };
-    setStatus('Analyzing move...');
 
+    setStatus('Analyzing move...');
     analyzePosition(positionBeforeMove);
   }
 
   function handleEngineMove(sfMove) {
     const chess = chessRef.current;
 
-    if (chess.turn() === 'w') {
+    if (pendingMoveRef.current) {
       const { moveUCI, positionBeforeMove } = pendingMoveRef.current;
-      const isCorrect =
-        moveUCI === sfMove ||
-        (sfMove.startsWith(moveUCI) && sfMove.length === 5);
+      let normalizedMove = moveUCI;
+
+      if (moveUCI.length === 4 && sfMove.length === 5) {
+        normalizedMove = moveUCI + sfMove[4];
+      }
+
+      const isCorrect = normalizedMove === sfMove;
+
+      console.log('engine move', sfMove);
+      console.log('user move', moveUCI);
 
       if (!isCorrect) {
         chess.load(positionBeforeMove);
@@ -68,16 +97,10 @@ export function usePuzzleEngine(setIsMate) {
         setCheckColor(
           chess.isCheck() ? (chess.turn() === 'w' ? 'white' : 'black') : false,
         );
-
+        pendingMoveRef.current = null; // <-- clear it here!
         setStatus('❌ Incorrect move');
         return;
       }
-
-      chess.move({
-        from: moveUCI.slice(0, 2),
-        to: moveUCI.slice(2, 4),
-        promotion: 'q',
-      });
 
       setCurrentFen(chess.fen());
       setDests(getLegalMoves(chess));
@@ -99,7 +122,7 @@ export function usePuzzleEngine(setIsMate) {
       chess.move({
         from: sfMove.slice(0, 2),
         to: sfMove.slice(2, 4),
-        promotion: 'q',
+        promotion: sfMove.length > 4 ? sfMove[4] : undefined,
       });
 
       setCurrentFen(chess.fen());

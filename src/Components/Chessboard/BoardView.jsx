@@ -8,6 +8,7 @@ export default function BoardView({
   onMove,
   turn,
   checkColor,
+  lastMove,
 }) {
   const boardRef = useRef(null);
   const cgRef = useRef(null);
@@ -17,12 +18,20 @@ export default function BoardView({
       fen,
       turnColor: turn,
       check: checkColor,
+      lastMove,
+      coordinates: false,
       movable: {
         free: false,
         color: turn,
         dests,
+        showDests: true,
         events: { after: onMove },
+
+        promotion: {
+          enabled: true,
+        },
       },
+
       highlight: {
         check: true,
         lastMove: true,
@@ -34,7 +43,7 @@ export default function BoardView({
     } else {
       cgRef.current.set(config);
     }
-  }, [fen, dests, turn]);
+  }, [fen, dests, turn, checkColor, onMove, lastMove]);
 
   return (
     <div ref={boardRef} style={{ width: width || 400, height: width || 400 }} />
